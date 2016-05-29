@@ -16,8 +16,8 @@
 github ID  |  Name  | 담당챕터
  :---:     | :---:  | :---:
 gomugom    | 정재남 | 2, 3
-alakoko    | 김지혜 | 4
-iamkyu     | 남규진 | 5
+alakoko    | 김지혜 | 4, 14
+iamkyu     | 남규진 | 5, 13
 squll1     | 노준혁 | 6
 okdoki9178 | 이병주 | 7
 arusantimo | 이창규 | 8
