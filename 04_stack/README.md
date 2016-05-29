@@ -11,37 +11,37 @@ function Stack(){
 }
 ```
 
-```
+```js
 function push(element){
 	this.dataStore[this.top++] = element;
 }
 ```
 
-```
+```js
 function pop(){
 	return this.dataStore[--this.top];
 }
 ```
 
-```
+```js
 function peek(){
 	return this.dataStore[this.top-1];
 }
 ```
 
-```
+```js
 function length(){
 	return this.top;
 }
 ```
 
-```
+```js
 function clear(){
 	this.top = 0;
 }
 ```
 
-```
+```js
 function Stack(){
 	this.dataStore = [];
 	this.top = 0;
@@ -77,7 +77,7 @@ function length(){
 }
 ```
 
-```
+```js
 var s = new Stack();
 s.push("David");
 s.push("Raymond");
@@ -99,7 +99,8 @@ console.log(s.peek());
 
 ##4.3 Stack  클래스 이용하기
 ###4.3.1 진법전환
-```
+
+```js
 function mulBase(num, base){
 	var s = new Stack();
 	do{
@@ -114,7 +115,7 @@ while(s.length()>0){
 }
 ```
 
-```
+```js
 function mulBase(num, base){
 	var s = new Stack();
 	do{
@@ -139,7 +140,8 @@ console.log(num + " converted to base " + base + "is" + newNum);
 ```
 
 ###4.3.2 회문
-```
+
+```js
 function isPalindrome(word){
 	var s = new Stack();
 
@@ -181,7 +183,7 @@ else{
 5! = 5 * 4 * 3 * 2 * 1 = 120
 ```
 
-```
+```js
 function factorial(n){
 	if(n===0){
 	return 1;
@@ -192,7 +194,7 @@ function factorial(n){
 }
 ```
 
-```
+```js
 function fact(n){
 	var s = new Stack();
 	while (n>1){
