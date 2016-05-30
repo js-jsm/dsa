@@ -1,0 +1,24 @@
+//예제1번~
+
+function studentsScore(){
+  this.scores = [];
+  this.addScore = addScore;
+  this.scoreAverage = scoreAverage;
+}
+
+function addScore(score){
+  this.scores.push(score);
+}
+
+function scoreAverage(){
+  var average =0;
+   average = this.scores.reduce(function(total,value){return total+value;}) / this.scores.length;
+  return average;
+}
+
+var nums = new studentsScore();
+nums.addScore(50);
+nums.addScore(70);
+nums.addScore(65);
+
+console.log(nums.scoreAverage());
