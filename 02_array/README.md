@@ -37,7 +37,7 @@ var objects = [1, "Joe", true, null];
 
 ```js
 var number = 3;
-var arr = 7, 4, 1776];
+var arr = [7, 4, 1776];
 print(Array.isArray(number)); // false
 print(Array.isArray(arr)); // true
 ```
@@ -97,7 +97,7 @@ print(samenums[0]); // 400
 ```js
 function copy(arr1, arr2) {
   for(var i = 0 ; i < arr1.length ; ++i){
-   arr2[i] = arr1[i];
+    arr2[i] = arr1[i];
   }
 }
 ```
@@ -262,7 +262,7 @@ function compare(num1, num2){
   return num1 - num2;
 }
 var nums = [3, 1, 2, 100, 4, 200];
-nums.sort();
+nums.sort(compare);
 print(nums); // 1,2,3,4,100,200
 ```
 
