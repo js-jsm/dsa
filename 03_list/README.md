@@ -164,6 +164,7 @@ function List() {
   this.length = function () { return this.listSize; };
 }
 
+
 /* :: ES6 :: */
 const List = (_=>{
   const dataStore = Symbol('');
@@ -203,9 +204,7 @@ const List = (_=>{
       this[dataStore] = [];
       this.curr = 0;
     }
-    contains(element) {
-      return this.find(element) > -1 ? true : false;
-    }
+    contains(element) { return this.find(element) > -1 ? true : false; }
     front() { this.curr = 0; }
     end() { this.curr = this[dataStore].length - 1; }
     prev() {
@@ -243,7 +242,7 @@ const List = (_=>{
 ```js
 for(names.front(); names.currPos() < names.length(); names.next()){
   console.log(names.getElement());
-}
+} // => 무한루프에 빠짐..
 
 /* :: ES6 :: */
 names.front();
@@ -257,7 +256,7 @@ do{
 ```js
 for(names.end(); names.currPos() >= 0; names.prev()){
   console.log(names.getElement());
-}
+} // => 무한루프에 빠짐..
 
 /* :: ES6 :: */
 names.end();
