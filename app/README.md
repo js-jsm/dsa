@@ -5,14 +5,14 @@ es6문법 변환을 위한 테스트를 로컬환경에서 진행하기위함.
 
 ##모듈설치
 ```cmd
-> npm i -g webpack
+~~/dsa/app > npm i -g webpack
 
-> npm install
+~~/dsa/app > npm install
 ```
 
 ##실행
 ```cmd
-> gulp
+~~/dsa/app > gulp
 ```
 
 ##구조 설명
