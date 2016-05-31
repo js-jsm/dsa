@@ -1,0 +1,12 @@
+{
+  "name": "es6_DSA_App",
+  "version": "1.1.0",
+  "description": "es6_DSA's JS Class collection",
+  "devDependencies": {
+    "browser-sync": "^2.12.10",
+    "gulp": "^3.9.1",
+    "run-sequence": "^1.2.1",
+    "webpack": "^1.12.2",
+    "webpack-stream": "^3.2.0"
+  }
+}
