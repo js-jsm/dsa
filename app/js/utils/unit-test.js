@@ -15,7 +15,7 @@ module.exports = {
         resultDom.innerHTML += `
         <div class="test-wrap">
             <pre class="func">${func}</pre>
-            <pre class="value">${val !== undefined ? 'value : ' + val : 'no value'}</pre>
+            ${val !== undefined ? `<pre class="value">value : ${val}</pre>` : ''}
         </div>`;
     }
 }
