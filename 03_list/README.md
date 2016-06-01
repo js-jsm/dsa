@@ -167,7 +167,7 @@ function List() {
 
 /* :: ES6 :: */
 const List = (_=>{
-  const dataStore = Symbol('');
+  const dataStore = Symbol();
   class List {
     constructor(...a) {
       this[dataStore] = a || [];
@@ -309,9 +309,7 @@ function createArr(file){
 }
 
 /* :: ES6 :: */
-function createArr(file){
-  return read(file).split('\n').map(_=> _.trim());
-}
+const createArr = file => read(file).split('\n').map(_=> _.trim());
 ```
 
 ###3.4.2 리스트로 상점 관리하기
@@ -362,7 +360,7 @@ function Customer(name, movie) {
 
 ```js
 function checkOut(name, movie, filmList, customerList) {
-  if(movieList.contains(movie)){
+  if(filmList.contains(movie)){
     var c = new Customer(name, movie);
     customerList.append(c);
     filmList.remove(movie);
