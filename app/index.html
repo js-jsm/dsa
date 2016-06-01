@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>webpack ES6~</title>
 <style>
+body {
+    font-size: 14px;
+}
 .test-wrap {
     position: relative;
     margin: 5px 0;
@@ -24,6 +27,20 @@
 }
 pre {
     margin: 5px 0;
+}
+pre.func {
+    padding: 5px;
+    background-color: rgba(255,255,255, .7);
+    border: 1px dashed #ccc;
+}
+pre.expect, pre.value {
+    margin-left: 5px;
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+
+pre.value {
+    color: #06f;
 }
 .equal .result {
     color: #0a0;
