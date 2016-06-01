@@ -1,6 +1,6 @@
 #03 List
 
-## Excercise
+## Exercise
 
 ###1.
 
