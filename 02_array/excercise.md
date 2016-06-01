@@ -1,4 +1,4 @@
-02 Arrays
+#02 Arrays
 
 ##Excercise
 
