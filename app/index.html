@@ -1,10 +1,40 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>webpack ES6~</title>
+<meta charset="UTF-8">
+<title>webpack ES6~</title>
+<style>
+.test-wrap {
+    position: relative;
+    margin: 5px 0;
+    border: 1px solid #666;
+    padding: 10px;
+}
+.equal {
+    background-color: #dfd;
+}
+.not-equal {
+    background-color: #fdd;
+}
+.result {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 1.5em;
+}
+pre {
+    margin: 5px 0;
+}
+.equal .result {
+    color: #0a0;
+}
+.not-equal .result {
+    color: #a00;
+}
+</style>
 </head>
 <body>
+<div id="testResult"></div>
 <script src="bundle.js"></script>
 </body>
 </html>

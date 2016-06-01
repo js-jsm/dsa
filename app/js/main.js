@@ -1,3 +1,1 @@
-const 
-    Point = require('./point-test')
-;
+require('./grade-test'); // grade-test.js 파일 호출
