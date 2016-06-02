@@ -271,8 +271,8 @@ do{
 ##3.4 리스트 기반 애플리케이션
 ###3.4.1 텍스트 파일 읽기
 [jx - simple ajax library](http://www.openjs.com/scripts/jx)
-```text
---- films.txt ---
+```js
+const films = `
 The Shqwshank Redemption
 The Godfather
 The Godfather: Part II
@@ -293,15 +293,16 @@ Seven Samurai
 The Matrix
 Forrest Gump
 City of God
+`;
 ```
 
 ```js
-var movies = read(films.txt).split('\n');
+var movies = films.split('\n');
 ```
 
 ```js
-function createArr(file){
-  var arr = read(file).split('\n');
+function createArr(text){
+  var arr = text.split('\n');
   for(var i = 0 ; i < arr.length ; ++i) {
     arr[i] = arr[i].trim();
   }
@@ -309,7 +310,7 @@ function createArr(file){
 }
 
 /* :: ES6 :: */
-const createArr = file => read(file).split('\n').map(_=> _.trim());
+const createArr = text => text.split('\n').map(_=> _.trim());
 ```
 
 ###3.4.2 리스트로 상점 관리하기
