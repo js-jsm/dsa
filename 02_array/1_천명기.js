@@ -37,11 +37,7 @@ class Grades {
 	}
 	average () {
 		var points = this.points,
-			sum = 0,
-			result = 0;
-		for ( var i = 0; i<points.length; i++ )
-			sum += points[i];
-		result = sum/points.length
-		return console.log( result );
+		sum = points.reduce((a, b) => {return a+b});
+		return console.log(sum/points.length);
 	}
 }
