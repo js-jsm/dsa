@@ -1,4 +1,4 @@
-function wordTemps(){
+function WordTemps(){
   this.words = [];
   this.wordAdd = wordAdd;
   this.wordPrint = wordPrint;
@@ -15,14 +15,13 @@ function wordTemps(){
  function wordReversePrint(){
   var words_r=[];
   var words_leng = this.words.length;
-  
-  
+
   for(var i = this.words.length; i>0; i--){
     words_r[words_leng-i] = this.words.pop();
     }
     return words_r.toString();
   };
-  
+
 };
 
 var thisWord = new wordTemps();
