@@ -21,7 +21,7 @@ class Temperature {
 		result = allTemps/allLength;
 		return console.log(result);
 	}
-	selectWeekAverage ( weekNumber ) {
+	selectWeekAverage ( weekNumber ) { 
 		if ( typeof weekNumber !== 'number' || weekNumber > weeklyTemps.length )
 			return console.log('숫자를 입력하지 않았거나 존재하지 않는 주차를 입력하였습니다.');
 		var temps = this.temps,
