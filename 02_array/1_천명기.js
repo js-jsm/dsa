@@ -30,7 +30,7 @@ class Grades {
 			this.points.push(point);
 		}
 	}
-	add ( pointer ) {
+	add ( point ) {
 		this.points.push( point );
 		console.log(this.points);
 		return this;
