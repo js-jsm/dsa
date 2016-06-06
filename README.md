@@ -13,18 +13,18 @@
 
 
 ### 멤버
-github ID  |  Name  | 담당챕터
- :---:     | :---:  | :---:
-gomugom    | 정재남 | 2, 3
-alakoko    | 김지혜 | 4, 14
-iamkyu     | 남규진 | 5, 13
-squll1     | 노준혁 | 6
-okdoki9178 | 이병주 | 7
-arusantimo | 이창규 | 8
-jung-jp    | 정재필 | 9
-yikl1004   | 천명기 | 10
-imcts      | 최태산 | 11
-hwangtan   | 황원준 | 12
+github ID  |  Name  | 타이핑챕터 | 담당챕터
+ :---:     | :---:  | :---: | :---:
+gomugom    | 정재남 | 2, 3 | 2, 3, 4
+alakoko    | 김지혜 | 4, 14 | 10
+iamkyu     | 남규진 | 5, 13 | 5
+squll1     | 노준혁 | 6 | 13
+okdoki9178 | 이병주 | 7 | 7
+arusantimo | 이창규 | 8 | 6
+jung-jp    | 정재필 | 9 | 9
+yikl1004   | 천명기 | 10 | 8
+imcts      | 최태산 | 11 | 11, 12
+hwangtan   | 황원준 | 12 | 14
 
 
 ### 챕터별 코드 문서화
