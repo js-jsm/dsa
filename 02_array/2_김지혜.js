@@ -1,20 +1,36 @@
-var words = ['the ', 'quick ', 'brown ', 'fox '];
-
+function wordTemps(){
+  this.words = [];
+  this.wordAdd = wordAdd;
+  this.wordPrint = wordPrint;
+  this.wordReversePrint = wordReversePrint;
+  
+  function wordAdd(word){
+    this.words.push(word);
+  };
   
   function wordPrint(){
-  console.log(words.toString());
-  }
+    return this.words.toString();
+  };
   
  function wordReversePrint(){
   var words_r=[];
-  var words_leng = words.length;
+  var words_leng = this.words.length;
   
-  for(var i = words.length; i>0; i--){
-    words_r[words_leng-i] = words.pop();
+  
+  for(var i = this.words.length; i>0; i--){
+    words_r[words_leng-i] = this.words.pop();
     }
-    console.log(words_r.toString());
-  }
+    return words_r.toString();
+  };
   
+};
 
-wordPrint();
-wordReversePrint();
+var thisWord = new wordTemps();
+
+thisWord.wordAdd("the");
+thisWord.wordAdd("quick");
+thisWord.wordAdd("brown");
+thisWord.wordAdd("fox");
+
+console.log(thisWord.wordPrint());
+console.log(thisWord.wordReversePrint());
