@@ -1,5 +1,5 @@
 //
-var grades = function() {
+var Grades = function() {
     var _a_score = [1,2,3,4,5,6,7,8,9,10],
         _n_avg =  0
         ;
@@ -31,4 +31,4 @@ var grades = function() {
     };
 };
 
-new grades().printAvg();
+new Grades().printAvg();
