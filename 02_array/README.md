@@ -324,7 +324,7 @@ function concat(accumulatedString, item){
 }
 var words = ['the ', 'quick ', 'brown ', 'fox '];
 var sentence = words.reduceRight(concat);
-console.log(sentence); // fox brown quick the 
+console.log(sentence); // fox brown quick the
 ```
 
 ```js
@@ -417,7 +417,7 @@ var names = Array.matrix(3,3,'Joe');
 console.log(names);
 
 /* :: ES6 :: */
-Array.matrix = (numrows, numcols, initial) => 
+Array.matrix = (numrows, numcols, initial) =>
   new Array(numrows).fill(new Array(numcols).fill(initial));
 ```
 
@@ -432,7 +432,7 @@ for (var row = 0; row < grades.length; ++row) {
     total += grades[row][col];
   }
   average = total / grades[row].length;
-  console.log("Student " + parseInt(row+1) + " average: " +    
+  console.log("Student " + parseInt(row+1) + " average: " +
     average.toFixed(2));
   total = 0;
   average = 0.0;
@@ -440,8 +440,8 @@ for (var row = 0; row < grades.length; ++row) {
 
 /* :: ES6 :: */
 const grades = [[89, 77, 78],[76, 82, 81],[91, 94, 89]];
-const result = grades.reduce((p, c, i)=> 
-`${p}Student ${i+1} average: ${(c.reduce((pg, cg) => 
+const result = grades.reduce((p, c, i)=>
+`${p}Student ${i+1} average: ${(c.reduce((pg, cg) =>
   pg + cg) / c.length
 ).toFixed(2)}
 `, ``);
@@ -456,7 +456,7 @@ for (var col = 0; col < grades.length; ++col) {
     total += grades[row][col];
   }
   average = total / grades[col].length;
-  console.log("Test " + parseInt(col+1) + " average: " + 
+  console.log("Test " + parseInt(col+1) + " average: " +
     average.toFixed(2));
   total = 0;
   average = 0.0;
@@ -482,7 +482,7 @@ for (var row = 0; row < grades.length; ++row) {
     total += grades[row][col];
   }
   average = total / grades[row].length;
-  console.log("Student " + parseInt(row+1) + " average: " +    
+  console.log("Student " + parseInt(row+1) + " average: " +
     average.toFixed(2));
   total = 0;
   average = 0.0;
@@ -490,8 +490,8 @@ for (var row = 0; row < grades.length; ++row) {
 
 /* :: ES6 :: */
 var grades = [[89, 77],[76, 82, 81],[91, 94, 89, 99]];
-const result = grades.reduce((p, c, i)=> 
-`${p}Student ${i+1} average: ${(c.reduce((pg, cg) => 
+const result = grades.reduce((p, c, i)=>
+`${p}Student ${i+1} average: ${(c.reduce((pg, cg) =>
   pg + cg) / c.length
 ).toFixed(2)}
 `, ``);
@@ -514,7 +514,7 @@ var p3 = new Point(2,8);
 var p4 = new Point(4,4);
 var points = [p1,p2,p3,p4];
 for (var i = 0; i < points.length; ++i) {
-  console.log("Point " + parseInt(i+1) + ": " + points[i].x + ", " + 
+  console.log("Point " + parseInt(i+1) + ": " + points[i].x + ", " +
     points[i].y);
 }
 var p5 = new Point(12,-3);
