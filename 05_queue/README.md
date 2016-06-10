@@ -89,7 +89,7 @@ function front() {
 }
 
 function back() {
-	return this.dataStore[this.dataStore[this.dataStore.length-1]];
+	return this.dataStore[this.dataStore.length-1];
 }
 
 function toString() {
@@ -204,7 +204,7 @@ function front() {
 }
 
 function back() {
-	return this.dataStore[this.dataStore[this.dataStore.length-1]];
+	return this.dataStore[this.dataStore.length-1];
 }
 
 function toString() {
@@ -356,7 +356,7 @@ function front() {
 }
 
 function back() {
-	return this.dataStore[this.dataStore[this.dataStore.length-1]];
+	return this.dataStore[this.dataStore.length-1];
 }
 
 function toString() {

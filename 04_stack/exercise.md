@@ -17,5 +17,5 @@ Using two stacks—one for the operands and one for the operators—design and i
 
 
 ###3.
-X사의 캔디통 `A`에는 딸기맛, 레몬맛, 유과맛 사탕들이 무작위로 섞여 들어가 있으며, 버튼을 누를 때마다 가장 마지막에 담겼던 사탕이 튀어나온다. 같은 구조로 생긴 비어있는 캔디통들(수량은 제한이 없다)을 이용하여, `A` 캔디통의 다른 사탕들의 순서는 바꾸지 않은 채 레몬맛 사탕만 제거하는 프로그램을 구현하시오.
+X사의 캔디통 `A`에는 딸기맛, 레몬맛, 커피맛 사탕들이 무작위로 섞여 들어가 있으며, 버튼을 누를 때마다 가장 마지막에 담겼던 사탕이 튀어나온다. 같은 구조로 생긴 비어있는 캔디통들(수량은 제한이 없다)을 이용하여, `A` 캔디통의 다른 사탕들의 순서는 바꾸지 않은 채 레몬맛 사탕만 제거하는 프로그램을 구현하시오.
 > An example of a real-world stack is a Pez dispenser. Imagine that your virtual Pez dispenser is filled with red, yellow, and white colors and you don’t like the yellow ones. Write a program that uses a stack (and maybe more than one) to remove the yellow ones without changing the order of the other candies in the dispenser.

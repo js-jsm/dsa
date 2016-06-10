@@ -246,7 +246,7 @@ for(names.front(); names.currPos() < names.length(); names.next()){
 
 /* :: ES6 :: */
 names.front();
-do{
+do {
   let res = names.next();
   if(res.done) break;
   console.log(res.value);
@@ -260,7 +260,7 @@ for(names.end(); names.currPos() >= 0; names.prev()){
 
 /* :: ES6 :: */
 names.end();
-do{
+do {
   let res = names.prev();
   if(res.done) break;
   console.log(res.value);
@@ -272,8 +272,8 @@ do{
 ###3.4.1 텍스트 파일 읽기
 [jx - simple ajax library](http://www.openjs.com/scripts/jx)
 ```js
-const films = `
-The Shqwshank Redemption
+const films =
+`The Shqwshank Redemption
 The Godfather
 The Godfather: Part II
 Pulp Fiction
@@ -292,12 +292,7 @@ Star Wars
 Seven Samurai
 The Matrix
 Forrest Gump
-City of God
-`;
-```
-
-```js
-var movies = films.split('\n');
+City of God`;
 ```
 
 ```js
@@ -372,7 +367,7 @@ function checkOut(name, movie, filmList, customerList) {
 ```
 
 ```js
-var movies = createArr('films.txt');
+var movies = createArr('films');
 var movieList = new List();
 var customers = new List();
 for(var i = 0 ; i < movies.length ; ++i) movieList.append(movies[i]);
