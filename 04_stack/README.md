@@ -144,7 +144,7 @@ function isPalindrome(word){
 	}
 	var rword = "";
 	while(s.length() > 0){
-		rword= s.pop();
+		rword+= s.pop();
 	}
 	if (word == rword){
 		return true;
@@ -156,16 +156,16 @@ function isPalindrome(word){
 
 var word = "hello";
 if (isPalindrome(word)){
-	console.log(word + "is a palindrome.");
+	console.log(word + " is a palindrome.");
 } else{
-	console.log(word + "is not a palindrome.");
+	console.log(word + " is not a palindrome.");
 }
 
 word = "racecar";
 if (isPalindrome(word)){
-	console.log(word + "is a palindrome.");
+	console.log(word + " is a palindrome.");
 } else {
-	console.log(word + "is not a palindrome.");
+	console.log(word + " is not a palindrome.");
 }
 ```
 
