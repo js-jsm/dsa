@@ -1,4 +1,4 @@
-Enter file contents hereclass Person {
+class Person {
     constructor(){
         this.persons = [];
     }
