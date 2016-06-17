@@ -134,6 +134,13 @@ var newNum = mulBase(num, base);
 console.log(num + " converted to base " + base + " is " + newNum);
 ```
 
+> 실은 `[num].toString([base])`만 쓰면 됨.
+```js
+(125).toString(8);  // "175" (10진수 125를 8진수로 전환)
+(240).toString(16); // "f0"  (10진수 240을 16진수로 전환)
+```
+
+
 ###4.3.2 회문
 ```js
 function isPalindrome(word){
@@ -161,6 +168,34 @@ if (isPalindrome(word)){
 	console.log(word + " is not a palindrome.");
 }
 
+word = "racecar";
+if (isPalindrome(word)){
+	console.log(word + " is a palindrome.");
+} else {
+	console.log(word + " is not a palindrome.");
+}
+```
+
+> #### 회문 개선
+> 아이디어 : n/2번만 비교해도 충분하다.
+```js
+function isPalindrome(word){
+	var leftHalf = [];
+	var rightHalf = [];
+	word = word.split('');
+	for(var i = 0 ; i < word.length / 2 ; i++){
+		leftHalf.push(word[i]);
+		rightHalf.push(word.pop());
+	}
+	if(leftHalf.every((v, i) => v === rightHalf[i])) return true;
+	return false;
+}
+var word = "hello";
+if (isPalindrome(word)){
+	console.log(word + " is a palindrome.");
+} else{
+	console.log(word + " is not a palindrome.");
+}
 word = "racecar";
 if (isPalindrome(word)){
 	console.log(word + " is a palindrome.");

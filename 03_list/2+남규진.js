@@ -9,18 +9,18 @@ class List {
 
 	getDataIndex(name) {
 		for (var i=0, end=this.dataStore.length; i<end; ++i) {
-			if (this.dataStore[i].getName() == name)
+			if (this.dataStore[i].name == name)
 				return i;
 		}
 		return -1;
 	}
 
-	findBySex(sex) {
+	findBySexUsingConcat(sex) {
 		var names = sex.concat(": ");
 
 		for (var i=0, end=this.dataStore.length; i<end; ++i) {
-			if (this.dataStore[i].getSex() == sex) {
-				names = names.concat(this.dataStore[i].getName(), ",");
+			if (this.dataStore[i].sex == sex) {
+				names = names.concat(this.dataStore[i].name, ",");
 			}
 		}
 
@@ -31,20 +31,31 @@ class List {
 		console.log(names);
 	}
 
+	findbySexUsingJoin(sex) {
+		var names = [];
+
+		for (var i=0, end=this.dataStore.length; i<end; ++i) {
+			if (this.dataStore[i].sex == sex) {
+				names.push(this.dataStore[i].name);
+			}
+		}
+
+		console.log(names.join(","));
+	}
 }
 
 class Person {
 	constructor(name, sex) {
-		this.name = name;
-		this.sex = sex;
+		this.personName = name;
+		this.personSex = sex;
 	}
 
-	getName() {
-		return this.name;
+	get name() {
+		return this.personName;
 	}
 
-	getSex() {
-		return this.sex;
+	get sex() {
+		return this.personSex;
 	}
 
 	toString() {
@@ -70,5 +81,10 @@ if (lloydIndex < 0) {
 	console.log("getDataIndex() Faild");
 }
 
-personList.findBySex('M');
-personList.findBySex('W');
+// Using concat
+personList.findBySexUsingConcat('M');
+personList.findBySexUsingConcat('W');
+
+// Using join
+personList.findbySexUsingJoin('M');
+personList.findbySexUsingJoin('W');
