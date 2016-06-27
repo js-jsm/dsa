@@ -41,11 +41,11 @@ var queue = new Deque();
 queue.push("Meredith");
 queue.push("Cynthia");
 queue.pop();
-console.log(queue.toString());
+console.log(queue.toString(', '));
 queue.unshift('Jennifer');
-console.log(queue.toString());
+console.log(queue.toString(', '));
 queue.shift();
-console.log(queue.toString());
+console.log(queue.toString(' ,'));
 
 function isPalindrome(word) {
     let q1 = new Deque();
