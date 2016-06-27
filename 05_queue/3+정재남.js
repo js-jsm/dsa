@@ -66,7 +66,7 @@ const template =
     <fieldset style="margin:10px; padding:10px; border:2px solid #c33; width:300px;">
         <legend>진료실</legend>
         <button id="btnTreat" type="button" style="padding:5px 10px; background-color:#fdd; border:1px solid #ccc">진찰하기</button>
-        <div id="treatingPatient"></div>
+        <div id="treatingPatient" style="margin-top:10px"></div>
     </fieldset>
     <fieldset style="margin:10px; padding:10px; border:2px solid #07c; width:300px;">
         <legend>대기실</legend>
@@ -92,10 +92,12 @@ const showTreating = function(treatee){
 
 $form.addEventListener('submit', function(e){
     e.preventDefault();
-    queue.enqueue(new Patient(this[0].value, this[1].value));
-    showWaitingList();
-    this[0].value = '';
-    this[1].value = '';
+    if(this[0].value && this[1].value){
+        queue.enqueue(new Patient(this[0].value, this[1].value));
+        showWaitingList();
+        this[0].value = '';
+        this[1].value = '';
+    }
 });
 
 $btnTreat.addEventListener('click', function(){
