@@ -153,4 +153,54 @@ console.log("David's extension : "+ pbook.find("David"));
    }
  }
 ```
-##7.3 Dictionary 클래스의 부가 함수
+
+[예제 7-4] count(), clear()함수 사용하기 
+```js 
+  //require("Dictionary.js");
+  var pbook = new Dictionary();
+  pbook.add("Raymond","123");
+  pbook.add("David","345");
+  pbook.add("Cynthia","456");
+  
+  console.log("Number of entries : " + pbook.count());
+  console.log("David's extension : " + pbook.find("David"));
+  
+  pbook.showAll();
+  pbook.clear();
+  console.log("Number of entries : " + pbook.count());
+```
+
+##7.3 Dictionary 클래스에 정렬 기능 추가하기
+
+```js
+  var a = new Array();
+  a[0] = "Mike";
+  a[1] = "David";
+  console.log(a); // Mike, David 출력
+  a.sort();
+  console.log(a); // David , Mike 출력
+```
+
+```js 
+  function showAll(){
+    for(var key in Object.keys(this.datastore).sort()){
+      console.log(key + " -> " + this.datastore[key]);
+    }
+  }
+```
+[예제 7-5] 정렬된 딕셔너리 출력
+
+```js
+  //require("Dictionary.js")
+  var pbook = new Dictionary();
+  pbook.add("Raymond","123");
+  pbook.add("David","345");
+  pbook.add("Cynthia","456");
+  pbook.add("Mike","723");
+  pbook.add("Jennifer","987");
+  pbook.add("Danny","012");
+  pbook.add("Jonathan","666");
+  
+  pbook.showAll();
+  
+```
