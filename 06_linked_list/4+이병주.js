@@ -82,7 +82,7 @@ class War {
 //            this.linkedList.display();
     }
 
-    lose() {
+    lose(len) {
 
         let kill = 0;
         const soldierList = this.linkedList;
@@ -90,7 +90,7 @@ class War {
         let startSoldier;
 
         while (soldierList.length > 2) {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < len; i++) {
                 soldier = soldier.next;
             }
 
@@ -113,4 +113,4 @@ class War {
 }
 
 const war = new War(52);
-war.lose()
+war.lose(3)
