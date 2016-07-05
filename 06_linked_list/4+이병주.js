@@ -89,19 +89,6 @@ class War {
         let soldier = soldierList.find("head");
         let startSoldier;
 
-//            for(let k=0; k<10; k++){
-//                for(let i=0; i<3; i++){
-//                    soldier = soldier.next;
-//                }
-//                startSoldier = soldier.prev;
-//                soldierList.remove(soldier);
-//                kill++;
-//                soldier = startSoldier;
-//                soldierList.display()
-//
-//
-//
-//            }
         while (soldierList.length > 2) {
             for (let i = 0; i < 3; i++) {
                 soldier = soldier.next;
