@@ -81,11 +81,13 @@ class CircularLinkedList {
         this.current = prevNode;
     }
     display(){
+        const list = [];
         let currNode = this.head;
         do {
             currNode = currNode.next;
-            console.log(currNode.elem);
+            list.push(currNode.elem);
         } while(currNode.next !== this.head)
+        return list;
     }
 }
 
@@ -111,8 +113,7 @@ const KillSoldiers = class extends CircularLinkedList {
             this.remove();
         }
         console.log('soldiers who killed : ' + this.killed.join(', '));
-        console.log('\nsurvivors are : ');
-        this.display();
+        console.log('\nsurvivors are : ' + this.display().join(', '));
     }
 }
 
