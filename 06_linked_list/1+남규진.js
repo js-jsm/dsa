@@ -53,15 +53,15 @@ class CircleLinkedList {
         let newNode = new Node(element);
 
         newNode.left = this.current;
-        newNode.right = this.head;
+        // newNode.right = this.head;
+        newNode.right = this.current.right;
         
         if((this.current = newNode) == false) {
             console.log("추가에 실패");
             return;
         }
 
-        this.current.left.right = newNode;
-        this.head.left = newNode;
+        newNode.left.right = this.current;
     }
 
     find(element) {
@@ -89,32 +89,16 @@ class CircleLinkedList {
         }
     }
 
-    advance(step) {
-        for (var begin=0, end=step; begin < end; ++begin) {
-            this.current.left.right = this.current.right;
-            this.current.right.left = this.current.left;
-
-            this.current.left = this.current.right;
-            this.current.right = this.current.right.right;
-
-            this.current.left.right = this.current;
-            this.current.right.left = this.current;
+    advance(step) {     
+        for (let begin=0, end=step; begin<end; ++begin) {
+            this.current = this.current.right;
         }
-        this.current = this.head.left;
     }
 
     back(step) {
-        for (var begin=0, end=step; begin < end; ++begin) {
-            this.current.left.right = this.current.right;
-            this.current.right.left = this.current.left;
-
-            this.current.right = this.current.left;
-            this.current.left = this.current.left.left;
-
-            this.current.left.right = this.current;
-            this.current.right.left = this.current;
+        for (let begin=0, end=step; begin<end; ++begin) {
+            this.current = this.current.left;
         }
-        this.current = this.head.left;
     }
 
     display() {
@@ -122,14 +106,17 @@ class CircleLinkedList {
         let array = [];
 
         do {
-            array.push(currNode.element);
+            if (this.current == currNode) {
+                array.push("[" + currNode.element + "]");
+            } else {
+                array.push(currNode.element);
+            }
+
             currNode = currNode.right;
         } while(currNode.element != "head")
         console.log(array.join(","));
     }
 }
-
-
 
 // example
 function randomRange(min, max) {
@@ -142,19 +129,33 @@ for (var i=0; i<9; ++i) {
     linkedList.add(randomRange(1, 100));
 }
 linkedList.add(5);
-linkedList.display(); //head,22,85,53,25,77,94,99,34,67,5
+console.log("====== add(5)");
+linkedList.display(); // head,61,72,84,65,32,54,68,36,50,[5]
 
 linkedList.remove(5);
-linkedList.display(); //head,22,85,53,25,77,94,99,34,67
+console.log("====== remove(5)");
+linkedList.display(); // head,61,72,84,65,32,54,68,36,[50]
 
 linkedList.advance(2);
-linkedList.display(); //head,22,67,85,53,25,77,94,99,34
+console.log("====== advance(2)");
+linkedList.display(); // head,[61],72,84,65,32,54,68,36,50
+
+linkedList.add(5);
+console.log("====== add(5)");
+linkedList.display(); // head,61,[5],72,84,65,32,54,68,36,50
 
 linkedList.advance(2);
-linkedList.display(); //head,22,34,67,85,53,25,77,94,99
+console.log("====== advance(2)");
+linkedList.display(); // head,61,5,72,[84],65,32,54,68,36,50
+
+linkedList.back(3);
+console.log("====== back(3)");
+linkedList.display(); // [head],61,5,72,84,65,32,54,68,36,50
+
+linkedList.add(1);
+console.log("====== add(1)");
+linkedList.display(); // head,[1],61,5,72,84,65,32,54,68,36,50
 
 linkedList.back(2);
-linkedList.display(); //head,22,34,67,85,53,25,99,77,94
-
-linkedList.back(2);
-linkedList.display(); //head,22,34,67,85,53,25,94,99,77
+console.log("====== back(2)");
+linkedList.display(); // head,1,61,5,72,84,65,32,54,68,36,[50]
