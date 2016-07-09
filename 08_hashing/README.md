@@ -299,7 +299,7 @@ var name, number;
 for (var i = 0; i < 3; i++){
     putstr("Enter a name (space to quit): ");
     name = readline();
-    putstr("Enter a number);
+    putstr("Enter a number");
     number = readine();
 }
 name = "";
