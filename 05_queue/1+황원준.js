@@ -1,18 +1,19 @@
 //더효율적인 코드는없는지 참언 부탁드려요 .ㅠ.ㅠ
 
 function Deque() {
-
-    this.dataStore = [];
-    this.enqueue = enqueue;
+    this.dataStore    = [];
+    this.enqueue      = enqueue;
     this.frontEnqueue = frontEnqueue;
-    this.dequeue = dequeue;
+    this.dequeue      = dequeue;
     this.frontDequeue = frontDequeue
-    this.front = front;
-    this.back = back;
-    this.toString = toString;
-    this.isEmpty =isEmpty;
-    this.count = count;
-    this.clear = clear;
+    this.front        = front;
+    this.back         = back;
+    this.toString     = toString;
+    this.isEmpty      = isEmpty;
+    this.count        = count;
+    this.clear        = clear;
+
+
 
     function enqueue(element) {
         this.dataStore.push(element);
@@ -69,6 +70,7 @@ var palindromeArr = [];
 
     }
 
+
     for (var j =0; j<splitLength; j++){
             var tempStr = splitStr[j].split("");
             for( var k=0; k<tempStr.length; k++){
@@ -107,3 +109,29 @@ var palindromeArr = [];
 }
 
 palindromeCheck("palindrome band Evereve OOIOO abba");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
