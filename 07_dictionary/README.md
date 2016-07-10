@@ -35,6 +35,7 @@ function showAll(){
 ```
 
 [예제 7-1] Dictionary 클래스
+
 ```js
 function Dictionary(){
     this.add = add;
@@ -71,6 +72,7 @@ function showAll(){
 ```
 
 [예제 7-2] Dictionary 클래스 사용하기
+
 ```js
 var pbook = new Dictionary();
 pbook.add("Mike","123");
@@ -109,6 +111,7 @@ console.log("David's extension : "+ pbook.find("David"));
 ```
 
 [예제 7-3] 추가 기능을 포함하는 Dictionary 클래스 정의
+
 ```js
  function Dictionary(){
    this.add = add;
@@ -155,6 +158,7 @@ console.log("David's extension : "+ pbook.find("David"));
 ```
 
 [예제 7-4] count(), clear()함수 사용하기 
+
 ```js 
   //require("Dictionary.js");
   var pbook = new Dictionary();
@@ -188,6 +192,7 @@ console.log("David's extension : "+ pbook.find("David"));
     }
   }
 ```
+
 [예제 7-5] 정렬된 딕셔너리 출력
 
 ```js
