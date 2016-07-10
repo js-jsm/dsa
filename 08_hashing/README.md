@@ -1,6 +1,7 @@
 #08 Hashing
 
 ##8.2 Hash Table Class
+
 ```js
 //hash table 클래스 생성자
 function HashTable () {
@@ -13,6 +14,7 @@ function HashTable () {
 ```
 
 ###8.2.1 Hash 함수 선택하기
+
 ```js
 //간단한 문자열 해시 함수의 정의
 function simpleHash (data) {
@@ -57,6 +59,7 @@ function showDistro () {
 ```
 
 [예제 8-1] 간단한 해시 함수를 이용한 해싱
+
 ```js
 load("HashTable.js");
 var someNames = ["David", "jennifer", "Donnie", "Raymond", "Cynthia", "Mike", "Clayton", "Danny", "Jonathan"];
@@ -79,6 +82,7 @@ hTable.showDistro();
 */
 ```
 [예제 8-1] print 추가
+
 ```js
 function simpleHash(data) {
    var total = 0;
@@ -185,8 +189,7 @@ var hTable = new HashTable();
 for (var i = 0; i < someNames.length; ++i) {
    hTable.put(someNames[i]);
 }
-htable.showDistro();
-
+hTable.showDistro();
 /*출력결과
 17:Cynthia
 25:Donnie
@@ -197,8 +200,9 @@ htable.showDistro();
 65:David
 66:Danny
 99:Raymond
-/*
+*/
 ```
+
 ###8.2.3 정수 키 해싱
 
 ```js
@@ -274,7 +278,7 @@ Data Distribution
 53: 60134873958
 54: 75760587691
 61: 78918058787
-/*
+*/
 ```
 
 ###8.2.4 해시 테이블에 테이터를 저장하거나 테이터 가져오기
@@ -360,8 +364,8 @@ function showDistro() {
 70: Donnie, Jonathan
 78: Clayton, Danny
 88: Raymond, Clayton
+*/
 ```
-
 
 ```js
 function put(key, data) {
@@ -397,6 +401,7 @@ function get(key) {
    return undefined;
 }
 ```
+
 ###8.3.2 선형 조사
 
 ```js
@@ -415,6 +420,7 @@ function put(key, data) {
    }
 }
 ```
+
 ```js
 function get(key) {
    var hash = -1;
