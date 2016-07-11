@@ -36,6 +36,7 @@ class TellNumberMgt extends Dictionary
 {
     constructor() {
         super();
+        this.setTellNumber();
 
     }
 
@@ -50,12 +51,8 @@ class TellNumberMgt extends Dictionary
 사나미, 444-444-4444`
 ;
         tels = text.split('\n');
-        console.log(tels);
         tels.map( tel => {
-            // tel.split(',').map( row => this.add( row[0].trim(), row[1].trim() ) );
-                // console.log(tel);
             data = tel.split(',');
-            //console.log(data, data[0], data[1]);
             this.add( data[0].trim(), data[1].trim() ) ;
 
         });
@@ -77,7 +74,7 @@ class TellNumberMgt extends Dictionary
 }
 
 var pbook = new TellNumberMgt();
-pbook.setTellNumber();
+//pbook.setTellNumber();
 
 console.log('Number of entries : ' + pbook.count());
 pbook.show('일나미');
