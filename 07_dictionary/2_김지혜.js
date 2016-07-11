@@ -13,11 +13,12 @@
       }
  }
 
- function showAll(){
-   for each(var key in Object.keys(this.datastore)) {
-     console.log(key + ":" + this.datastore[key]);
-   }
- }
+function showAll(){
+    var thisDataStore = this.datastore;
+    Object.keys(thisDataStore).forEach(function(key){
+       console.log(key + ":" + this.datastore[key]);
+    })
+}
 
 
  var sentence = "the brown fox jumped over the blue fox.";
