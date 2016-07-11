@@ -16,7 +16,7 @@
 function showAll(){
     var thisDataStore = this.datastore;
     Object.keys(thisDataStore).forEach(function(key){
-       console.log(key + ":" + this.datastore[key]);
+       console.log(key + ":" + thisDataStore[key]);
     })
 }
 
