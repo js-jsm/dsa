@@ -8,9 +8,9 @@
 
 ### 9.1.1 집합의 정의
 - 빈 집합(empty set) 맴버가 하나도 없는 집합,
-- 전체 집합(universe set) 집합에 포함될 수 있는 모든 멤버를 포함하는 집합
+- 전체 집합(universe set) 모든 대상을 원소로 포함하는 집합
 - 두 집합의 멤버가 정확하게 같을 때만 같은 집합으로 간주
-- 한 집합의 모든 멤버가 다른 집합에 포함되어 있을 때 이집합을 다른 집합의 서브집합(subset)으로 간주 한다.
+- 한 집합의 모든 멤버가 다른 집합에 포함되어 있을 때, 이 집합을 다른 집합의 서브집합(subset)으로 간주 한다.
 
 ### 9.1.2 집합 동작
 - 합집합
@@ -21,9 +21,14 @@
     한 집합의 멤버 중 다른 집합에 존재하지 않는 멤버로만 새로운 집합을 만든다.
 
 ## 9.2 Set 클래스 구현
+
+Set 크래스는 배열에 데이터를 저장한다.
+
 ```js
 function Set() {
     this.dataStore = [];
+
+    // 집합은 고유의 멤버만 추가할 수 있다.
     this.add = function( data ) {
         if ( this.dataStore.indexOf(data) < 0 ) {
             this.dataStore.push(data);
@@ -32,6 +37,8 @@ function Set() {
             return false;
         }
     }
+
+    // 존재여부 확인 후 삭제 처리.
     this.remove = function( data ) {
         var pos = this.dataStore.indexOf(data);
         if ( pos > -1 ) {
@@ -44,9 +51,8 @@ function Set() {
     this.size = function() {
         return this.dataStore.length;
     }
-    /**
-     * 특정 멤버가 집합에 포함되어 있는지 여부를 알려준다.
-     */
+
+    // 특정 멤버가 집합에 포함되어 있는지 여부를 알려준다.
     this.contains = function(data) {
         if ( this.dataStore.indexOf(data) > -1 ) {
             return true;
@@ -114,6 +120,8 @@ names.add("Jennifer");
 names.add("Cynthia");
 names.add("Mike");
 names.add("Raymond");
+
+console.log('=== names.add("Mike") ===');
 if ( names.add("Mike") ) {
     console.log("Mike added");
 } else {
@@ -121,6 +129,7 @@ if ( names.add("Mike") ) {
 }
 console.log(names.show().join());
 
+console.log('=== removed = "Mike" ===');
 var removed = "Mike";
 if ( names.remove(removed) ) {
     console.log(removed + " removed.");
@@ -128,9 +137,11 @@ if ( names.remove(removed) ) {
     console.log(removed + " not removed.");
 }
 
+console.log('=== names.add("Clayton"); ===');
 names.add("Clayton");
 console.log(names.show().join());
 
+console.log('=== removed = "Alisa" ===');
 var removed = "Alisa";
 if ( names.remove(removed) ) {
     console.log(removed + " removed.");
@@ -146,13 +157,13 @@ if ( names.remove(removed) ) {
     두 번째 집합에서 각 멤버가 첫 번째 집합에 존재하는지 확인한다.
     첫 번째 집합에 존재하는 멤버는 그냥 넘기고 존재하지 않으면 추가한다.
 - intersect() : 교집합
-- subset() : 서브집합
+    첫번째 집합의 멤버중 두번째 집합의 멤버와 같은 요소
+- subset() : 서브집합 여부를 확인
     인자로 제공한 집합의 크기가 비교 대상 집합의 크기보다 큰 지 확인,    
     비교대상 집합의 모든 멤버가 인자집합의 멤버여야 한다.
     인자집합 < 비교대상 보다 크기가 작으면 서브집합이 아니다.
 - difference() : 차집합
-
-
+    첫번째 집합의 멤버중 두번째 집합의 멤버와 같은 멤버를 삭제
 ```js
 /**
  * 특정 멤버가 집합에 포함되어 있는지 여부를 알려준다.
