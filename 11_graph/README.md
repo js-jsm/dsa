@@ -228,9 +228,9 @@ g.bfs(0);
 3 - >  1 
 4 - >  2 
 
-VM17259:50 Visited vertex: 0
-VM17259:50 Visited vertex: 1
-VM17259:50 Visited vertex: 2
+Visited vertex: 0
+Visited vertex: 1
+Visited vertex: 2
  -->
 ```
 
