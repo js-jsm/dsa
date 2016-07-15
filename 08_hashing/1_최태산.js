@@ -40,7 +40,7 @@ class HashMap {
        return parseInt(total % 100);
     }
 }
-
+ 
 
 const dictionary = 
     `abc:에이비씨
