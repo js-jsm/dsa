@@ -17,11 +17,21 @@ function wordDictionary() {
     
     //해시 테이블에저장 하는 기능
     function hashSet(str) {
-        var total = 0;
+        var hash = 5381;
         for (var i = 0; i < str.length; i++) {
-            total += total + str.charCodeAt(i);
+            hash = hash * 33 + str.charCodeAt(i);
         }
-        return Math.round(total % 37)
+        return Math.round(hash % 1013)
     }    
-
+    /*
+    Another simple hash function that we can implement and is better than the "lose
+    lose" hash function is djb2:
+        var djb2HashCode = function (key) {
+        var hash = 5381; //{1}
+        for (var i = 0; i < key.length; i++) { //{2}
+        hash = hash * 33 + key.charCodeAt(i); //{3}
+        }
+        return hash % 1013; //{4}
+        };
+    */
 }
