@@ -38,7 +38,7 @@ function checkPair(str){
    
         console.log(bracket.indexOf(word));
         
-        if(bracket.indexOf(word) === 0){
+        if(bracket.indexOf(word) !== -1){
             bracketStack.push(word);
         }
     }
@@ -47,4 +47,4 @@ function checkPair(str){
     }
 }
 
-checkPair('2.3+23/12+(3.14159*.24');
+checkPair('2.3+23/12+(3.14159*.24)');
