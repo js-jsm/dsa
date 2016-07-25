@@ -44,8 +44,6 @@ function BST(){
 	this.root = null;
 	this.insert = insert;
 	this.inOrder = inOrder;
-	this.getMin = getMin;
-	this.getMax = getMax;
 }
 
 function insert(data){
@@ -211,7 +209,6 @@ function find(data){
 ```js
 load("BST");
 var nums = new BST();
-var str = readline();
 
 nums.insert(23);
 nums.insert(45);
@@ -221,15 +218,16 @@ nums.insert(3);
 nums.insert(99);
 nums.insert(22);
 inOrder(nums.root);
-str = prompt('Enter a value to search for:');
 
-var value = parseInt(readline());
+var searchStr = prompt('Enter a value to search for:');
+
+var value = Number(searchStr);
 var found = nums.find(value);
 if(found != null){
-	console.log('Found' + value + 'in the BST');
+	console.log('Found ' + value + ' in the BST');
 }
 else{
-	console.log(value + 'was not found in the BST');
+	console.log(value + ' was not found in the BST');
 }
 ```
 
@@ -367,4 +365,36 @@ while(cont == 'y'){
 	str = prompt('Look at another grade (y/n)?');
 	cont = readline();
 }
+```
+```js
+25 32 24 92 80 46 21 85 23 22 3
+24 43 4 100 34 82 76 69 51 44
+92 54 1 88 4 66 62 74 49 18
+15 91 95 80 4 64 13 30 51 21
+12 64 82 81 38 100 17 76 62 32
+3 24 47 86 49 100 49 81 100 49
+80 0 28 79 34 64 40 81 35 23
+95 90 92 13 28 88 31 82 16 93
+12 92 52 41 27 53 31 35 90 21
+22 66 87 80 83 66 3 6 18
+
+Enter a grade: 78
+No occurrences of 78
+Look at another grade (y/n)?y
+
+Enter a grade: 65
+No occurrences of 65
+Look at another grade (y/n)?y
+
+Enter a grade: 23
+Occurrences of 23: 2
+Look at another grade (y/n)?y
+
+Enter a grade: 89
+No occurrences of 89
+Look at another grade (y/n)?y
+
+Enter a grade: 100
+Occurrences of 100: 4
+Look at another grade (y/n)?n
 ```
