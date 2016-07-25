@@ -240,6 +240,14 @@ Found 23 in the BST.
 
 ##10.4 BST의 노드 삭제하기
 ```js
+function getSmallest(node) {
+    if (node.left == null) {
+        return node;
+    } else {
+        return getSmallest(node.left);
+    }
+}
+
 function remove(data){
 	root = removeNode(this.root, data);
 }
