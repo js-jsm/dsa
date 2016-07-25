@@ -78,9 +78,9 @@ function insert(data){
 ```js
 //중위 탐색 inOrder() 함수 코드
 function inOrder(node){
-	if(!(node == null)){
-		iOrder(node.left);
-		putStr(node.show()+" ");
+	if(node !== null){
+		inOrder(node.left);
+		console.log(node.show());
 		inOrder(node.right);
 	}
 }
@@ -94,16 +94,17 @@ nums.insert(45);
 nums.insert(16);
 nums.insert(37);
 nums.insert(3);
-nums.insert(9);
+nums.insert(99);
 nums.insert(22);
 console.log("Inorder trabersal: ");
 inOrder(nums.root);
 ```
+
 ```js
 //전위 탐색 preOrder() 함수 정의
 function preOrder(node){
-	if(!(node == null)){
-		putstr(node.show() + " ");
+	if(node !== null){
+		console.log(node.show());
 		preOrder(node.left);
 		preOrder(node.right);
 	}
@@ -112,10 +113,10 @@ function preOrder(node){
 ```js
 //후위탐색 postOrder()함수 정의
 function postOrder(node){
-	if(!(node == null)){
+	if(node !== null){
 		postOrder(node.left);
 		postOrder(node.right);
-		putstr(node.show()+" ");
+		console.log(node.show());
 	}
 }
 ```
@@ -170,7 +171,7 @@ nums.insert(45);
 nums.insert(16);
 nums.insert(37);
 nums.insert(3);
-nums.insert(9);
+nums.insert(99);
 nums.insert(22);
 
 var min = nums.getMin();
@@ -215,7 +216,7 @@ nums.insert(45);
 nums.insert(16);
 nums.insert(37);
 nums.insert(3);
-nums.insert(9);
+nums.insert(99);
 nums.insert(22);
 inOrder(nums.root);
 str = prompt('Enter a value to search for:');
