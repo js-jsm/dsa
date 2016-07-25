@@ -44,6 +44,8 @@ function BST(){
 	this.root = null;
 	this.insert = insert;
 	this.inOrder = inOrder;
+	this.getMin = getMin;
+	this.getMax = getMax;
 }
 
 function insert(data){
@@ -143,7 +145,7 @@ Postorder traversal :
 ```js
 function getMin(){
 	var current = this.root;
-	while(!(current.left == null)){
+	while(current.right !== null){
 		current = current.left;
 	}
 	return current.data;
@@ -156,7 +158,7 @@ current.left = null;
 ```js
 function getMax(){
 	var current = this.root;
-	while(!(current.right == null)){
+	while(current.right !== null){
 		current = current.right;
 	}
 	return current.data;
@@ -175,10 +177,10 @@ nums.insert(99);
 nums.insert(22);
 
 var min = nums.getMin();
-console.log('The minimum Value of the BST is:' + min);
+console.log('The minimum Value of the BST is: ' + min);
 
 var max = nums.getMax();
-console.log('The maximum Value of the BST is:' + max);
+console.log('The maximum Value of the BST is: ' + max);
 ```
 
 ```js
