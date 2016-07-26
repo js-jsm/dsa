@@ -100,6 +100,137 @@ class Tree {
         return false;
     } 
 
+    delete(data) {
+        let current = this.findNode(data),
+            parent  = this.findParent(data);
+
+
+        console.log(current, parent);
+
+        if(!current)
+            return;
+
+        if(!current.left && !current.right) { //자식이 하나도 없을시.
+            if(parent.left.data == current.data) 
+                parent.left = null;
+
+            if(parent.right.data == current.data)
+                parent.right = null;
+
+        } else if(current.left && !current.right) { //좌측 자식노드만 있을때
+            if(parent.left.data == current.data)
+                parent.left = current.left;
+
+            if(parent.right.data == current.data)
+                parent.right = current.left;
+
+        } else if(!current.left && current.right) { //우측 자식노드만 있을때
+            if(parent.left.data == current.data)
+                parent.left = current.right;
+
+            if(parent.right.data == current.data)
+                parent.right = current.right;
+
+        } else { //자식노드가 둘다 있을때
+            //1. 좌측의 서브노드값들 중 가장 값이 큰녀석이나  
+            //2. 우측의 서브노드값 중 가장 값이 작은 녀석을 본인으로 대체한다. 
+
+            let childRoot = current.left;
+
+            while(true) {
+                if(childRoot.right)            
+                    childRoot = childRoot.right;
+                else 
+                    break;
+            }
+
+            //자식 노드의 부모노드의 주소값 삭제.
+            let childParent = this.findParent(childRoot.data);
+
+            if(childParent.left)  
+                if(childParent.left.data == childRoot.data)
+                    childParent.left = null;
+
+            if(childParent.right)
+                if(childParent.right.data == childRoot.data)
+                    childParent.right = null;
+
+
+            if(parent.left) 
+                if(parent.left.data == current.data) 
+                    parent.left = childRoot;
+            
+
+            if(parent.right)
+                if(parent.right.data == current.data)
+                    parent.right = childRoot;
+
+
+            childRoot.left  = current.left;
+            childRoot.right = current.right; 
+        }
+    }
+
+    findParent(v) {
+        let current = this.root;
+
+        this.stack = new Stack();
+
+        this.stack.push(current);
+
+        while(!this.stack.isEmpty()) {
+
+            if(current) {
+
+                if(current.left) 
+                    if(current.left.data == v) 
+                        return current;
+
+                if(current.right) 
+                    if(current.right.data == v) 
+                        return current;
+                    
+                this.stack.push(current);
+                current = current.left;
+
+            } else {
+
+                current = this.stack.pop().right;
+
+            }
+        }
+
+        return;
+    }
+
+    findNode(v) {
+        let current = this.root;
+
+        this.stack = new Stack();
+
+        this.stack.push(current);
+
+        while(!this.stack.isEmpty()) {
+
+            if(current) {
+
+                if(current.data == v) 
+                    return current;
+                
+
+                this.stack.push(current);
+                current = current.left;
+
+            } else {
+
+                current = this.stack.pop().right;
+
+            }
+        }
+
+        return;
+    }
+
     //전위순회 
     preOrder() {
         let current = this.root;
@@ -200,7 +331,8 @@ console.log(
     tree.nodeCount, tree.edge
 );
 
+tree.delete(8);
 
 
-
+console.log(tree);
 
