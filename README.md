@@ -20,16 +20,16 @@ hwangtan   | 황원준 | 12         | 14
 
 Name   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14
 :---:  |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
-김지혜 | O O | O O | X X | X O | O O | O O | X O |  |  |  |  |  | 
-남규진 | O O | O O | O O | O O | O O | O O | X O |  |  |  |  |  | 
-노준혁 | O O | O O | X O | X O | X O | X O | X O |  |  |  |  |  | 
-이병주 | O O | X X | X O | O O | O O | O O | O O |  |  |  |  |  | 
-이창규 | O O | O O | O O | O O | O O | X X | O O |  |  |  |  |  | 
-정재남 | O O | O O | O O | O O | O O | O O | O O |  |  |  |  |  | 
-정재필 | O O | O O | O O | O O | O O | O O | O O |  |  |  |  |  | 
-천명기 | O O | X O | X O | X O | X O | O O | X O |  |  |  |  |  | 
-최태산 | O O | O O | O O | O O | O O | O O | O O |  |  |  |  |  | 
-황원준 | O O | O O | O O | O O | X O | X X | O O |  |  |  |  |  | 
+김지혜 | O O | O O | O X | X O | O O | O O | X O | _ O |  |  |  |  | 
+남규진 | O O | O O | O O | O O | O O | O O | X O | s O |  |  |  |  | 
+노준혁 | O O | O O | X O | X O | X O | X O | X O | _ O |  |  |  |  | 
+이병주 | O O | X X | X O | O O | O O | O O | O O | k O |  |  |  |  | 
+이창규 | O O | O O | O O | O O | O O | X X | O O | _ O |  |  |  |  | 
+정재남 | O O | O O | O O | O O | O O | O O | O O | i O |  |  |  |  | 
+정재필 | O O | O O | O O | O O | O O | O O | O O | _ O |  |  |  |  | 
+천명기 | O O | X O | X O | X O | X O | O O | X O | p O |  |  |  |  | 
+최태산 | O O | O O | O O | O O | O O | O O | O O | _ O |  |  |  |  | 
+황원준 | O O | O O | O O | O O | X O | X X | O O | _ O |  |  |  |  | 
 
 
 
