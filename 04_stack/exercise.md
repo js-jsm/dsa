@@ -6,6 +6,12 @@
 스택은 수식의 괄호쌍이 제대로 갖춰졌는지를 확인하는 데에도 이용할 수 있다. 수식을 인자로 받아 수식 내에 열거나 닫는 괄호가 없을 때 해당 위치를 반환하는 함수를 구현하시오. 예를 들어 `2.3 + 23 / 12 + (3.14159 * .24.` 에는 닫는 괄호가 없다.
 > A stack can be used to ensure that an arithmetic expression has balanced parentheses. Write a function that takes an arithmetic expression as an argument and returns the postion in the expression where a parenthesis is missing. An example of an arithmetic expression with unbalanced parentheses is `2.3 + 23 / 12 + (3.14159 * .24.`
 
+```
+// 1. 여는괄호마다 push
+// 2. 닫힌괄호에서 pop인데, 바로앞이 같은 종류의 여는괄호여야함. 아니면 에러!
+// 3. 마지막에 남아있는게 없으면 OK!
+```
+
 
 ###2.
 다음과 같은 형식의 후위연산표기를 처리하는 후위연산 평가자를 구현하시오.
