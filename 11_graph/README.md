@@ -432,7 +432,8 @@ function topSort() {
   }
   
   for(var i = 0; i < stack.length; i++) {
-    if(stack[i] != undefined && stack[i] != false) {
+    //if(stack[i] != undefined && stack[i] != false) {
+    if(stack[i] != undefined && visited[i] != false) {
       console.log(this.vertexList[stack[i]]);
     }
   }
@@ -545,6 +546,7 @@ g.topSort();
 
 <!-- 
 출력결과
+CS1
 CS2
 Data Structures
 Assembly Language
