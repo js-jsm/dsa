@@ -346,6 +346,49 @@ while(paths.length > 0) {
  -->
 ```
 
+```js
+/*
+저도 태산씨와 같은 맘으로 짜증이나서 그만하려다가
+이사람을 이해해 보려고 노력하면서 코드가 돌아가게 고쳐 봤어요.
+*/
+function pathTo(v) {
+    var source = 0;
+    // 찾을 값이 있는지 확인.
+    if ( !this.hasPathTo(v) ) {
+        return undefined;
+    }
+    var path = [];
+    for ( var i = v; i != source; i = this.edgeTo[i] ) {
+        path.push(i);
+    }
+    path.push(source);
+
+    return path;
+}
+
+// Graph 클래스 테스트
+var g = new Graph(5);
+g.addEdge(0, 1);
+g.addEdge(0, 2);
+g.addEdge(1, 3);
+g.addEdge(2, 4);
+
+//너비우선 검색을 이용하기 위해
+g.bfs(0);
+
+var vertex = 4;
+var paths = g.pathTo(vertex);
+var buffer = [];
+while (paths.length > 0) {
+    if (paths.length > 1) {
+        buffer.push(paths.pop() + '-');
+    } else {
+        buffer.push(paths.pop());
+    }
+}
+console.log(buffer.join(''));
+```
+
 
 ##11.6 위상 정렬
 
