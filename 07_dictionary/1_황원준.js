@@ -28,7 +28,7 @@ class Dictionary {
     return console.log("clear complete storage")
   }
 
-  printAll() {
+  printValues() {
     var values = []
 
     for (var k in this.store) {
@@ -37,6 +37,10 @@ class Dictionary {
       }
     }
     return values
+  }
+
+  printAll() {
+    return this.store;
   }
 
 }
@@ -63,7 +67,7 @@ class PhoneBook extends Dictionary {
 
 var pbook = new PhoneBook()
 
-pbook.printAll() //모든 전화번호 출력 기능
+pbook.printValues() //모든 전화번호 출력 기능
 pbook.get("USER0") //특정 전화번호 출력 기능
 pbook.append("jacob","010-4444-5555") //전화번호 추가
 pbook.remove("USER0") //전화번호 삭제
