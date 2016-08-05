@@ -1,12 +1,13 @@
 #11 Graph And Graph Algorithm
 
-## 11.3.1 정점 표현 
+## 11.3.1 정점 표현
 
 ```js
 function Vertex(label) {
   this.label = label;
 }
 ```
+
 ##11.3.3 그래프 구현
 
 ```js
@@ -54,14 +55,14 @@ g.addEdge(1, 3);
 g.addEdge(2, 4);
 g.showGraph();
 
-<!-- 
-출력 결과 
-0 - >  1 2 
-1 - >  0 3 
-2 - >  0 4 
-3 - >  1 
-4 - >  2  
--->
+/*
+출력 결과
+0 - >  1 2
+1 - >  0 3
+2 - >  0 4
+3 - >  1
+4 - >  2
+*/
 ```
 
 ##11.4.1 깊이 우선 검색
@@ -74,7 +75,6 @@ function Graph(v) {
 
   for(var i = 0; i < this.vertices; i++) {
     this.adj[i] = [];
-    this.adj[i].push('');
   }
   this.addEdge = addEdge;
   this.showGraph = showGraph;
@@ -103,21 +103,21 @@ function showGraph() {
     }
     str += '\n';
   }
-
   console.log(str);
 }
 
 function dfs(v) {
+  var self = this;
   this.marked[v] = true;
   if(this.adj[v] != undefined) {
     console.log('Visited vertex: ' + v);
   }
 
-  for( var w in this.adj[v]) {
-    if(!this.marked[w]) {
-      this.dfs(w);
+  this.adj[v].forEach(function(w) {
+    if(!self.marked[w]) {
+      self.dfs(w);
     }
-  }
+  });
 }
 
 var g;
@@ -130,23 +130,26 @@ g.showGraph();
 g.dfs(0);
 
 
-<!-- 
+/*
 출력결과
 
-0 - >  1 2 
-1 - >  0 3 
-2 - >  0 4 
-3 - >  1 
-4 - >  2 
+0 - >  1 2
+1 - >  0 3
+2 - >  0 4
+3 - >  1
+4 - >  2
 
 Visited vertex: 0
 Visited vertex: 1
+Visited vertex: 3
 Visited vertex: 2
- -->
+Visited vertex: 4
+*/
 ```
 
 
 ##11.4.2 너비 우선 검색
+
 ```js
 function Graph(v) {
   this.vertices = v;
@@ -155,7 +158,6 @@ function Graph(v) {
 
   for(var i = 0; i < this.vertices; i++) {
     this.adj[i] = [];
-    this.adj[i].push('');
   }
   this.addEdge = addEdge;
   this.showGraph = showGraph;
@@ -190,23 +192,24 @@ function showGraph() {
 }
 
 function bfs(s) {
+  var self = this;
   var queue = [];
   this.marked[s] = true;
   queue.push(s);
-  
+
   while(queue.length > 0) {
     var v = queue.shift();
     if(v != undefined) {
       console.log('Visited vertex: ' + v);
     }
 
-    for(var w in this.adj[v]) {
-      if(!this.marked[w]) {
-        this.edgeTo[w] = v;
-        this.marked[w] = true;
+    this.adj[v].forEach(function(w) {
+      if(!self.marked[w]) {
+        self.edgeTo[w] = v;
+        self.marked[w] = true;
         queue.push(w);
       }
-    }
+    });
   }
 }
 
@@ -219,22 +222,24 @@ g.addEdge(2, 4);
 g.showGraph();
 g.bfs(0);
 
-<!-- 
+/*
 출력결과
 
-0 - >  1 2 
-1 - >  0 3 
-2 - >  0 4 
-3 - >  1 
-4 - >  2 
+0 - >  1 2
+1 - >  0 3
+2 - >  0 4
+3 - >  1
+4 - >  2
 
 Visited vertex: 0
 Visited vertex: 1
 Visited vertex: 2
- -->
+Visited vertex: 3
+Visited vertex: 4
+*/
 ```
 
-##11.5 최단 경로 찾기 
+##11.5 최단 경로 찾기
 
 ```js
 function Graph(v) {
@@ -284,7 +289,7 @@ function bfs(s) {
   var queue = [];
   this.marked[s] = true;
   queue.push(s);
-  
+
   while(queue.length > 0) {
     var v = queue.shift();
     if(v != undefined) {
@@ -302,7 +307,7 @@ function bfs(s) {
 }
 
 function pathTo(v) {
-  var source = 0; 
+  var source = 0;
   if(!this.hasPathTo(v)) {
     return undefined;
   }
@@ -312,7 +317,6 @@ function pathTo(v) {
     path.push(i);
   }
   path.push(s);
-  console.log('path!!!', path);
   return path;
 }
 
@@ -339,11 +343,11 @@ while(paths.length > 0) {
   }
 }
 
-<!-- 
-  소스코드 자체가 에러. 
+/*
+  소스코드 자체가 에러.
   진짜 만든놈 명치 한방 겁나 쌔게 때리고 싶네-_-
-  추후 해결. 
- -->
+  추후 해결.
+*/
 ```
 
 ```js
@@ -401,7 +405,6 @@ function Graph(v) {
 
   for(var i = 0; i < this.vertices; i++) {
     this.adj[i] = [];
-    this.adj[i].push('');
   }
   this.addEdge = addEdge;
   this.showGraph = showGraph;
@@ -424,13 +427,13 @@ function topSort() {
   for(var i = 0; i < this.vertices; i++) {
     visited[i] = false;
   }
-  
+
   for(var i = 0; i < this.vertices; i++) {
     if(visited[i] == false) {
         this.topSortHelper(i, visited, stack);
     }
   }
-  
+
   for(var i = 0; i < stack.length; i++) {
     //if(stack[i] != undefined && stack[i] != false) {
     if(stack[i] != undefined && visited[i] != false) {
@@ -497,7 +500,7 @@ function bfs(s) {
   var queue = [];
   this.marked[s] = true;
   queue.unshift(s);
-  
+
   while(queue.length > 0) {
     var v = queue.shift();
     if(typeof(v) != 'string') {
@@ -515,7 +518,7 @@ function bfs(s) {
 }
 
 function pathTo(v) {
-  var source = 0; 
+  var source = 0;
   if(!this.hasPathTo(v)) {
     return undefined;
   }
@@ -544,7 +547,7 @@ g.showGraph();
 g.topSort();
 
 
-<!-- 
+/*
 출력결과
 CS1
 CS2
@@ -552,7 +555,7 @@ Data Structures
 Assembly Language
 Operating Systems
 Algorithm
- -->
+*/
 ```
 
 
