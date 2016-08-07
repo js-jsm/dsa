@@ -262,15 +262,15 @@ function removeNode(node, data){
 			return null;
 		}
 		//왼쪽 자식이 없는 노드
-		if(node.left ==null){
+		if(node.left == null){
 			return node.right;
 		}
 		//오른쪽 자식이 없는 노드	
-		if(node.right = null){
+		if(node.right == null){
 			return node.left;
 		}
 		//두 자식이 모두 존재하는 노드
-		var tempNode = getSmallest(node,right);
+		var tempNode = getSmallest(node.right);
 		node.data = tempNode.data;
 		node.right = removeNode(node.right, tempNode.data);
 		return node;
