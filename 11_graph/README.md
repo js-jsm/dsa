@@ -244,7 +244,6 @@ function Graph(v) {
 
   for(var i = 0; i < this.vertices; i++) {
     this.adj[i] = [];
-    this.adj[i].push('');
   }
   this.addEdge = addEdge;
   this.showGraph = showGraph;
@@ -254,6 +253,7 @@ function Graph(v) {
   for(var i = 0; i < this.vertices; i++) {
     this.marked[i] = false;
   }
+
   this.pathTo = pathTo;
   this.hasPathTo = hasPathTo;
 }
@@ -280,45 +280,49 @@ function showGraph() {
   console.log(str);
 }
 
+function hasPathTo(v) {
+  return this.marked[v];
+}
+
+function pathTo(v) {
+    var source = 0;
+    // 찾을 값이 있는지 확인.
+    if ( !this.hasPathTo(v) ) {
+        return undefined;
+    }
+    var path = [];
+    for ( var i = v; i != source; i = this.edgeTo[i] ) {
+        path.push(i);
+    }
+    path.push(source);
+
+    return path;
+}
+
+
 function bfs(s) {
+  var self = this;
   var queue = [];
   this.marked[s] = true;
   queue.push(s);
-  
+
   while(queue.length > 0) {
     var v = queue.shift();
     if(v != undefined) {
       console.log('Visited vertex: ' + v);
     }
 
-    for(var w in this.adj[v]) {
-      if(!this.marked[w]) {
-        this.edgeTo[w] = v;
-        this.marked[w] = true;
+    this.adj[v].forEach(function(w) {
+      if(!self.marked[w]) {
+        self.edgeTo[w] = v;
+        self.marked[w] = true;
         queue.push(w);
       }
-    }
+    });
   }
 }
 
-function pathTo(v) {
-  var source = 0; 
-  if(!this.hasPathTo(v)) {
-    return undefined;
-  }
 
-  var path = [];
-  for(var i = v; i != source; i = this.edgeTo[i]) {
-    path.push(i);
-  }
-  path.push(s);
-  console.log('path!!!', path);
-  return path;
-}
-
-function hasPathTo(v) {
-  return this.marked[v];
-}
 
 var g;
 g = new Graph(5);
@@ -326,24 +330,32 @@ g.addEdge(0, 1);
 g.addEdge(0, 2);
 g.addEdge(1, 3);
 g.addEdge(2, 4);
+g.showGraph();
+
+g.bfs(0);
+
 
 var vertex = 4;
 var paths = g.pathTo(vertex);
-var str = '';
 
-while(paths.length > 0) {
-  if(paths.length > 1) {
-    str += paths.pop() + '-';
-  } else {
-    str += paths.pop();
-  }
-}
+console.log(paths, ' : 0-2-4');
 
-<!-- 
-  소스코드 자체가 에러. 
-  진짜 만든놈 명치 한방 겁나 쌔게 때리고 싶네-_-
-  추후 해결. 
- -->
+
+/*
+출력결과
+
+0 - >  1 2
+1 - >  0 3
+2 - >  0 4
+3 - >  1
+4 - >  2
+
+Visited vertex: 0
+Visited vertex: 1
+Visited vertex: 2
+Visited vertex: 3
+Visited vertex: 4
+*/
 ```
 
 
