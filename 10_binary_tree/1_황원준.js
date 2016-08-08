@@ -45,20 +45,13 @@ class BinarySearchTree {
   
     //작동안됨
      inOrder(node) {
-        if(node !== null) {
+        if(node !== undefined) {
             this.inOrder(node.left);
             console.log(node.show());
             this.inOrder(node.right);
         }
     }
-    //작동됨
-     inOrder(node) { 
-        if (!(node == null)) { 
-            this.inOrder(node.left); 
-            console.log(node.show() + " "); 
-            this.inOrder(node.right); 
-        } 
-    } 
+ 
 
 }
 
