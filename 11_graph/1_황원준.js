@@ -74,8 +74,6 @@ class Graph {
 
     //너비 우선 탐색
     BFS(vertex) { 
-        let start = new Date().getTime();
-
         let color = this.initColor(),
             queue = [], 
             d = [], 
@@ -106,14 +104,13 @@ class Graph {
             }
             color[u] = 'black';
         }
-        let end = new Date().getTime();
-        return { distances: d, predecessors: pred , time: (end - start).toFixed(4) };
+        return { distances: d, predecessors: pred };
 
     }
     
     //깊이 우선 탐색
     DFS() {
-            let start = new Date().getTime();
+            
             let color = this.initColor(),
             d = [],
             f = [],
@@ -130,12 +127,11 @@ class Graph {
                     this.DFSVisit(this.vertices[i], color, d, f, p);
                 }
             }
-            let end = new Date().getTime();
+        
             return {
                 discovery : d,
                 finished: f,
-                predecessors: p,
-                time : (end - start).toFixed(4)
+                predecessors: p
             }
     }
 
