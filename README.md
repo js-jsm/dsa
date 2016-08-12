@@ -29,7 +29,7 @@ Name   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  |
 정재필 | O O | O O | O O | O O | O O | O O | O O | _ O | O O |  |  |  |
 천명기 | O O | X O | X O | X O | X O | O O | X O | p O | X O |  |  |  |
 최태산 | O O | O O | O O | O O | O O | O O | O O | _ O | O O |  |  |  |
-황원준 | O O | O O | O O | O O | O O | O X | O O | _ O | X O |  |  |  |
+황원준 | O O | O O | O O | O O | O O | O X | O O | _ O | O O |  |  |  |
 
 
 
