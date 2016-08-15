@@ -134,3 +134,48 @@ function iterFib(n) {
 
 
 ###14.1.2 가장 긴 공통 문자열 찾기
+
+####[예제 14-2] 두 문자열의 가장 긴 공통 문자열을 찾는 함수
+```js
+function lcs(word1, word2) {
+    var max = 0,
+        index = 0,
+        lcsarr = new Array(word1.length+1);
+
+    for (var i = 0; i <= word1.length + 1; ++i) {
+        lcsarr[i] = new Array(word2.length+1);
+        for (var j = 0; j <word2.length + 1; ++j) {
+            lcsarr[i][j] = 0;
+        }
+    }
+
+    for (var i = 0; i <= word1.length; ++i) {
+        for (var j = 0; j <= word2.length; ++j) {
+            if (i == 0 || j == 0) {
+                lcsarr[i][j] = 0;
+            } else {
+                if (word1[i-1] == word2[j-1]) {
+                    lcsarr[i][j] = lcsarr[i-1][j-1] + 1;
+                } else {
+                    lcsarr[i][j] = 0;
+                }
+            }
+            if (max < lcsarr[i][j]) {
+                max = lcsarr[i][j];
+                index = i;
+            }
+        }
+    }
+
+    var str = "";
+
+    if (max == 0) {
+        return "";
+    } else {
+        for (var i = index - max; i <= max; ++i) {
+            str += word2[i];
+        }
+        return str;
+    }
+}
+```
