@@ -1,5 +1,3 @@
-#작성중
-
 #14 Advanced Algorithms
 
 ##14.1 동적프로그래밍
@@ -332,3 +330,32 @@ Number of quarters - 3 - 0.03
 | 값   | 50 | 140 | 60 | 60 |
 | 무게 | 5  | 20  | 10 | 12 |
 | 비율 | 10 | 7   | 6  | 5  |
+
+```js
+//배낭 문제에서의 최적의 결과를 찾는 코드
+
+function ksack(values, weights, capacity) {
+    var load = 0,
+        i = 0,
+        w = 0;
+
+    while (load < capacity && i < 4) {
+        if (weights[i] <= (capacity - load)) {
+            w += values[i];
+            load += weights[i];
+        } else {
+            var r = (capacity -load) / weights[i];
+            w += r * values[i];
+            load += weights[i];
+        }
+        ++i;
+    }
+    return w;
+}
+
+var items = ["A", "B", "C", "D"],
+    values = [50, 140, 60, 60],
+    weights = [5, 20, 10, 12],
+    capacity = 30;
+console.log(ksack(values, weights, capacity))   //220 출려
+```
