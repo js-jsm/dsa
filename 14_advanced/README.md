@@ -357,5 +357,5 @@ var items = ["A", "B", "C", "D"],
     values = [50, 140, 60, 60],
     weights = [5, 20, 10, 12],
     capacity = 30;
-console.log(ksack(values, weights, capacity))   //220 출려
+console.log(ksack(values, weights, capacity))   //220 출력
 ```
