@@ -179,3 +179,156 @@ function lcs(word1, word2) {
     }
 }
 ```
+
+###14.1.3 배낭 문제 : 재귀해법
+```js
+function max(a, b) {
+    return (a > b) ? a : b;
+}
+
+function knapsack(capacity, size, value, n) {
+    if (n == 0 || capacity == 0) {
+        return 0;
+    }
+
+    if (size[n-1] > capacity) {
+        return knapsack(capacity, size, value, n-1);
+    } else {
+        return max(
+            value[n-1]
+            + knapsack(capacity - size[n-1], size, value, n-1),
+            knapsack(capacity, size, value, n-1)
+        );
+    }
+}
+
+var value = [4, 5, 10, 11, 13],
+    size = [3, 4, 7, 8, 9],
+    capacity = 16,
+    n = 5;
+console.log(knapsack(capacity, size, value, n));
+
+//출력결과 : 23
+```
+
+###14.1.4 배낭문제 : 동적 프로그래밍 해법
+####[예제 14-3] 동적 프로그래밍을 이용한 배낭문제 해결
+```js
+function max(a, b) {
+    return (a > b) > a : b;
+}
+
+function dknapsack(capacity, size, value, n) {
+    var K = [];
+    for (var i = 0; i <= capacity + 1; ++i) {
+        K[i] = [];
+    }
+    for (var i = 0; i <= n; i++) {
+        for ( var w = 0; w <= capacity; w++) {
+            if (i == 0 || w == 0) {
+                K[i][w] = 0;
+            } else if (size[i-1] <= w) {
+                K[i][w] = max(value[i-1] + K[i-1][w-size[i-1]], K[i-1][w]);
+            } else {
+                K[i][w] = K[i-1][w];
+            }
+            putstr(K[i][w] + " ");
+        }
+        print();
+    }
+    return K[n][capacity];
+}
+
+var value = [4, 5, 10, 11, 13],
+    size = [3, 4, 7, 8, 9],
+    capacity = 16,
+    n = 5;
+console.log(dknapsack(capacity, size, value, n));
+
+/*
+결과값
+
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  4  4  4  4  4  4  4  4  4  4  4  4  4  4
+0  0  0  4  5  5  5  9  9  9  9  9  9  9  9  9  9
+0  0  0  4  5  5  5 10 10 10 14 15 15 15 19 19 19
+0  0  0  4  5  5  5 10 11 11 14 15 16 16 19 21 21
+0  0  0  4  5  5  5 10 11 13 14 15 17 18 19 21 23
+23
+*/
+```
+
+
+##14.2 탐욕 알고리즘
+###14.2.1 첫번째 탐욕 알고리즘 예제 : 동전 거스름돈 문제
+####[예제 14-4] 탐욕 알고리즘을 이용해 동전 거스름돈 문제 해결
+```js
+function makeChange(origAmt, coins) {
+    var remainAmt = 0;
+
+    if (origAmt % 0.25 < origAmt) {
+        coins[3] = parseInt(origAmt / 0.25);
+        remainAmt = origAmt % 0.25;
+        origAmt = remainAmt;
+    }
+
+    if (origAmt % 0.1 < origAmt) {
+        coins[2] = parseInt(origAmt / 0.1);
+        remainAmt = origAmt % 0.1;
+        origAmt = remainAmt;
+    }
+
+    if (origAmt % 0.05 < origAmt) {
+        coins[1] = parseInt(origAmt / 0.05);
+        remainAmt = origAmt % 0.05;
+        origAmt = remainAmt;
+    }
+
+    coins[0] = parseInt(origAmt / 0.01);
+}
+
+function showChange(coins) {
+    if(coins[3] > 0) {
+        console.log("Number of quarters - " + coins[3] + " - " + coins[3] * 0.25);
+    }
+
+    if(coins[2] > 0) {
+        console.log("Number of dimes - " + coins[2] + " - " + coins[2] * 0.10);
+    }
+
+    if(coins[1] > 0) {
+        console.log("Number of nickels - " + coins[1] + " - " + coins[1] * 0.05);
+    }
+
+    if(coins[0] > 0) {
+        console.log("Number of pennis - " + coins[0] + " - " + coins[0] * 0.01);
+    }
+}
+
+var origAmt = 0.63,
+    coins = [];
+makeChange(origAmt, coins);
+showChange(coins);
+
+/*
+결과값
+
+Number of quarters - 2 - 0.5
+Number of dimes - 1 - 0.1
+Number of quarters - 3 - 0.03
+*/
+```
+
+###14.2.2 탐욕 알고리즘으로 배낭 문제 해결하기
+>배낭문제의 알고리즘
+>1. 배낭의 용량은 W, 물건의 가치는 v, 물건의 무게는 w다.
+>2. 항목의 값어치는 v/w 비율로 평가한다.
+>3. 값어치가 높은 물건부터 고려한다.
+>4. 가능한 한 많은 물건을 추가한다.
+
+####[표 14-1] 물건의 무게, 값, 비율 정보
+| 물건 | A  | B   | C  | D  |
+|------|----|-----|----|----|
+| 값   | 50 | 140 | 60 | 60 |
+| 무게 | 5  | 20  | 10 | 12 |
+| 비율 | 10 | 7   | 6  | 5  |
