@@ -53,10 +53,21 @@ g.addEdge(1, 3);
 g.addEdge(1, 5);
 g.addEdge(2, 4);
 g.addEdge(5, 6);
-const paths = g.pathTo(6);
-let res = '';
-console.log(paths.reduceRight((p, c, i) => `${p} - ${c}`));
+g.addEdge(4, 6);
+g.addEdge(3, 6);
 
-/**
- * 0 - 1 - 5 - 6
- */
+console.log(g.pathTo(6).reduceRight((p, c, i) => `${p} - ${c}`));
+
+/*    0
+     / \
+    1   2
+   / \   \
+  3   5   4
+   \   \ /
+    ㄴ-  6    */
+
+/* 결과
+0 - 1 - 5 - 6
+0 - 2 - 4 - 6 (얘는 안나옴)
+0 - 1 - 3 - 6 (얘도 안나옴)
+*/
