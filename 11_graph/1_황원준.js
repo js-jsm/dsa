@@ -1,5 +1,3 @@
-//과제 풀이를 위한 변형 그래프~ 개인참고용 입니다~
-
 
 class Dictionary {
   constructor() {
@@ -49,55 +47,56 @@ class Dictionary {
 }
 
 class Graph {
-
     constructor() {
         this.vertices = [];
-        this.adjList = new Dictionary();
+        this.adjList = new Dictionary(); //인접 리스트 사용
         this.time = 0; //used DFS 
     }
 
     initColor() {
+        //탐색할 Vertex 를 white 로 초기화 시킨다.
         let color = [];
-        for (var i = 0; i < this.vertices.length; i++) {
-            color[this.vertices[i]] = 'white';
-        }
+            for (var i = 0; i < this.vertices.length; i++) {
+                color[this.vertices[i]] = 'white';
+            }
         return color;
     }
 
     addVertex(vertex) {
-        this.vertices.push(vertex);
-        this.adjList.append(vertex, []);
+        this.vertices.push(vertex); //vertices = ["A","B","C"]
+        this.adjList.append(vertex, []); //adjList = ["A":[], "B":[], "C":[]]
     }
 
     addEdge(start, end) {
         this.adjList.get(start).push(end);
         this.adjList.get(end).push(start);
     }
-    
-    bfs(vertex) { //너비 우선 검색
+
+    //너비 우선 탐색
+    BFS(vertex) { 
         let color = this.initColor(),
-            queue = [],
-            d = [],
+            queue = [], 
+            d = [], 
             pred = [];
 
             queue.push(vertex);
 
+            //거리, 이전값 초기화
             for (let i = 0; i < this.vertices.length; i++) {
                 d[this.vertices[i]] = 0;
                 pred[this.vertices[i]] = null;
             }
-
+        
         while (!queue.length == 0) {
             let u = queue.shift(),
                 neighbors = this.adjList.get(u);
 
-            color[u] = 'gray';
+            color[u] = 'gray';//방문
 
             for(let i = 0; i < neighbors.length; i++) {
                 let w = neighbors[i];
-
                 if (color[w] === 'white') {
-                    color[w] = 'gray';
+                    color[w] = 'gray'; 
                     d[w] = d[u] + 1;
                     pred[w] = u;
                     queue.push(w);
@@ -108,49 +107,27 @@ class Graph {
         return { distances: d, predecessors: pred };
 
     }
-
-    dfs(cb) { //깊이 탐색
-        let color = this.initColor();
-
-        for (let i = 0; i < this.vertices.length; i++) {
-            if (color[this.vertices[i]] === 'white') {
-                this.dfsVisit(this.vertices[i], color, cb);
-            }
-        }
-    }
     
-    dfsVisit(u, color, cb) {
-        color[u] = 'gray';
-        if (cb) {
-            cb(u);
-        }
-
-        let neighbors = this.adjList.get(u);
-        for (let i = 0; i < neighbors.length; i++) {
-            let w = neighbors[i];
-            if (color[w] === 'white') {
-                dfsVisit(w, color, cb);
-            }
-        }
-        color[u] = 'black';
-    }
+    //깊이 우선 탐색
     DFS() {
+            
             let color = this.initColor(),
             d = [],
             f = [],
             p = [];
 
             for(let i = 0; i < this.vertices.length; i++) {
-                f[vertices[i]] = 0;
-                d[vertices[i]] = 0;
-                p[vertices[i]] = null;
+                f[this.vertices[i]] = 0;
+                d[this.vertices[i]] = 0;
+                p[this.vertices[i]] = null;
             }
 
-            for(i = 0; i < this.vertices.length; i++) {
+            for(let i = 0; i < this.vertices.length; i++) {
                 if (color[this.vertices[i]] === 'white') {
-                    DFSVisit(vertices[i], color, d, f, p);
+                    this.DFSVisit(this.vertices[i], color, d, f, p);
                 }
             }
+        
             return {
                 discovery : d,
                 finished: f,
@@ -159,20 +136,22 @@ class Graph {
     }
 
     DFSVisit(u, color, d, f, p) {
-        console.log(`discovered ${u}`);
+        // console.log(`discovered ${u}`);
         color[u] = 'gray';
         d[u] = ++this.time;
+
         let neighbors = this.adjList.get(u);
+
         for(var i = 0; i < neighbors.length; i++) {
             let w = neighbors[i];
             if (color[w] === 'white') {
                 p[w] = u;
-                DFSVisit(w, color, d, f, p);
+                this.DFSVisit(w, color, d, f, p);
             }
         }
         color[u] = 'black';
         f[u] = ++this.time;
-        console.log(`explored ${u}`);
+       // console.log(`explored ${u}`);
     }
 
     toString() {
@@ -194,50 +173,59 @@ class Graph {
 
 }
 
-
-var graph = new Graph();
-var myVertices = Array.from(new Array(9), (x,i) => String.fromCharCode(i+65));
-
-for (var i = 0; i < myVertices.length; i++) {
-    graph.addVertex(myVertices[i])
-}
-
-graph.addEdge('A', 'B'); 
-graph.addEdge('A', 'C');
-graph.addEdge('A', 'D');
-graph.addEdge('C', 'D');
-graph.addEdge('C', 'G');
-graph.addEdge('D', 'G');
-graph.addEdge('D', 'H');
-graph.addEdge('B', 'E');
-graph.addEdge('B', 'F');
-graph.addEdge('E', 'I');
-
-var shortestPathA = graph.bfs(myVertices[0]);
-console.log(shortestPathA);
-
-var fromVertex = myVertices[0];
-for (var i = 1; i < myVertices.length; i++) {
-    var toVertex = myVertices[i],
-        stack = [];
-
-        for(var v = toVertex; v !== fromVertex; v = shortestPathA.predecessors[v]) {
-            stack.push(v);
+class TestBed {
+    constructor() {
+       this.vector = new Graph();
+       const myVertices = 
+        Array.from(new Array(26), (x,i) => String.fromCharCode(i+65));
+        
+       for (var i = 0; i < myVertices.length; i++) {
+            this.vector.addVertex(myVertices[i]);
         }
 
-        stack.push(fromVertex);
-        var s = stack.pop();
-        while (!stack.length == 0) {
-            s += ` - ${stack.pop()}`;
-        }
-        console.log(s);
+        this.vector.addEdge('A', 'B'); 
+        this.vector.addEdge('A', 'C');
+        this.vector.addEdge('A', 'D');
+        this.vector.addEdge('C', 'D');
+        this.vector.addEdge('C', 'G');
+        this.vector.addEdge('D', 'G');
+        this.vector.addEdge('D', 'H');
+        this.vector.addEdge('B', 'E');
+        this.vector.addEdge('B', 'F');
+        this.vector.addEdge('E', 'I');
+        this.vector.addEdge('I', 'J');
+        this.vector.addEdge('I', 'K');
+        this.vector.addEdge('J', 'L');
+        this.vector.addEdge('K', 'M');
+        this.vector.addEdge('F', 'N');
+        this.vector.addEdge('N', 'U');
+        this.vector.addEdge('G', 'O');
+        this.vector.addEdge('O', 'P');
+        this.vector.addEdge('O', 'Q');
+        this.vector.addEdge('P', 'X');
+        this.vector.addEdge('Q', 'Y');
+        this.vector.addEdge('Q', 'V');
+        this.vector.addEdge('V', 'W');
+        this.vector.addEdge('H', 'R');
+        this.vector.addEdge('R', 'S');
+        this.vector.addEdge('R', 'T');
+        this.vector.addEdge('S', 'Z');
+
+    }
+
+    execute() {
+        let t0  = performance.now();
+        let dfs = this.vector.DFS();
+        let t1  = performance.now();
+         console.log(`Depth-fs: ${(t1 - t0).toFixed(4)} milliseconds`);
+        let t2 = performance.now();
+        let bfs = this.vector.BFS("A");
+        let t3 = performance.now();
+         console.log(`Breadth-fs: ${(t3 - t2).toFixed(4)} milliseconds`);
+    }
+
 }
 
-graph.addEdge('A', 'C');
-graph.addEdge('A', 'D');
-graph.addEdge('B', 'D');
-graph.addEdge('B', 'E');
-graph.addEdge('C', 'F');
-graph.addEdge('F', 'E');
 
-var result = graph.DFS();
+var tb = new TestBed();
+tb.execute();
