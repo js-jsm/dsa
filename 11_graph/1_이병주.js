@@ -7,6 +7,7 @@ class Graph {
             this.initEdge(json);
             this.startTime = new Date().getTime();
             this.endTime = null;
+            this.type = "";
             for (var i = 0; i < this.vertices; i++) {
                 this.adj[i] = [];
             }
@@ -67,6 +68,7 @@ class Graph {
             .concat(queue);
             } while(queue.length);
             this.marked = this.marked.map(v=>false);
+            this.type = "dfs";
             this.endTime = new Date().getTime();
         }
 
@@ -91,10 +93,11 @@ class Graph {
                     }
                 });
             }
+            this.type = "bfs";
             this.endTime = new Date().getTime();
         }
         getTimeResult(){
-            console.log(this.endTime - this.startTime);
+            console.log(this.type+"//"+(this.endTime - this.startTime));
         }
     }
 
