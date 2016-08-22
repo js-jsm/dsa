@@ -230,7 +230,7 @@ function mergeSort(arr){
 }
 
 function mergeArrays(arr , startLeft , stopLeft, startRight , stopRight ){
-    var rightArr = new Array(stop - startRight +1);
+    var rightArr = new Array(stopRight - startRight +1);
     var leftArr = new Array(stopLeft - startLeft +1);
 
     var k=  startRight;
