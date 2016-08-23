@@ -15,4 +15,4 @@ Create an array of 1,000 integers sorted in reverse numerical order. Write a pro
 
 ###4.
 Create an array of over 10,000 randomly generated integers and sort the array using both Quicksort and the JavaScript built-in sorting function, timing each function. Is there a time difference between the two functions?
-> 임의의 숫자 10,000 개의 정수를 포함하는 배열을 만든 다음, 퀵정렬과 자바 내장정렬 함수를 이용해 배열을 정렬하면서 시간을 측정하시오. 두 함수의 성능이 같은지 비교하시오.
+> 임의의 숫자 10,000 개의 정수를 포함하는 배열을 만든 다음, 퀵정렬과 머지정렬함수를 이용해 배열을 정렬하면서 시간을 측정하시오. 두 함수의 성능이 같은지 비교하시오.
