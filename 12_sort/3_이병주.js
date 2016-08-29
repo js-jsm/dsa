@@ -133,3 +133,4 @@
     insert.insertSort();
 
 
+//100회정도 테스트해본결과 select -> insert -> bubble순으로 빠르다
