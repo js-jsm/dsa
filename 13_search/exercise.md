@@ -4,9 +4,6 @@
 순차 검색 알고리즘은 항상 데이터 집합에서 검색한 첫 번째 요소를 반환한다. 데이터 집합에서 검색된 마지막 요소를 반환하도록 순차 검색 알고리즘을 고치시오.
 > The sequential search algorithm always finds the first occurrence of an element in a data set. Rewrite the algorithm so that the last occurrence of an element is returned.
 
-Deque 클래스를 이용하여 어떤 단어가 회문인지 여부를 검사하는 프로그램을 만드시오.
-> Use the Deque class you created in Example 5-1 to determine if a given word is a palindrome.
-
 ###2.
 순차 검색으로 데이터를 검색하는데 걸린 시간과 삽입 정렬을 이용한 데이터 집합 정렬에 걸린 시간을 포함한 전체 이진 검색을 수행하는데 걸린 시간을 비교하시오. 누가 더 빠른가?
 > Compare the time it takes to perform a sequential search with the total time it takes to both sort a data set using insertion sort and perform a binary search on the data set. What are your results?
