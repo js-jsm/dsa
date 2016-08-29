@@ -66,20 +66,23 @@ class SortCollections {
         return `insertion-sort complelte ${this.array}`;
     }
 
-    comparePerformance() {
+    comparePerf() {
         if(this.array) {
-                    let t0 = performance.now();
-                    this.bubbleSort();
-                    let t1 = performance.now();
-                    this.perf.push({sort: 'bubble', time: (t1 - t0).toFixed(4)})
-                    let t2 = performance.now();
-                    this.selectionSort();
-                    let t3 = performance.now();
-                    this.perf.push({sort: 'selection', time:(t3 - t2).toFixed(4)})
-                    let t4 = performance.now();
-                    this.insertionSort();
-                    let t5 = performance.now();
-                    this.perf.push({sort: 'insertion', time: (t5 - t4).toFixed(4)})
+
+            let arr = new Array(6).fill(performance);
+
+            [arr[1], arr[3], arr[7]] = 
+            [this.bubbleSort(), this.selectionSort(), this.insertionSort()]
+
+            let arr2 = arr.map((v, i) => {
+                 let type = Object.prototype.toString.call(v);
+                 return type === '[object Performance]'? v.now() : v(); 
+            });
+
+            this.perf['bubble']    = (arr2[1] -arr2[0]).toFixed(4)
+            this.perf['selection'] = (arr2[3] -arr2[2]).toFixed(4)
+            this.perf['insertion'] = (arr2[5] -arr2[4]).toFixed(4)
+            
             return console.table(this.perf)
         }
     }
@@ -88,4 +91,4 @@ class SortCollections {
 
 var sort = new SortCollections('draw into the mouth by contracting the muscles of the lip and mouth to make a partial vacuum');
 
-sort.comparePerformance();
+sort.comparePerf();
