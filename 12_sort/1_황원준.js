@@ -1,8 +1,9 @@
 class SortCollections {
     constructor(items) {
         this.array = [...items];
-        this._len  = this.array.length;
+        this.prev  = [...items]; 
         this.perf  = [];
+        this._len  = this.array.length;
     }
 /*basical sort*/   
     //used bubble,selection
@@ -13,6 +14,7 @@ class SortCollections {
     }
     //basics sort 
     bubbleSort() {
+
         let i, j, stop; 
 
          for (i = 0; i < this._len; i++) {
@@ -22,7 +24,9 @@ class SortCollections {
                 }
             }
          }
-        return `bubble-sort complete ${this.array}`
+        this.array = this.prev.slice();        
+        console.log(`bubble${this.prev}`)
+        return `bubble-sort complete`
     }
     //better then bubbleSort
     selectionSort() {
@@ -39,7 +43,9 @@ class SortCollections {
                 this.swap(i, min)
             }
         }
-        return `selection-sort complete ${this.array}`;
+        this.array = this.prev.slice();  
+        console.log(`selection${this.prev}`)
+        return `selection-sort complete`;
     }
     //better then selectionSort
     insertionSort() {
@@ -55,7 +61,9 @@ class SortCollections {
             }
             this.array[j] = temp;
         }
-        return `insertion-sort complelte ${this.array}`;
+        this.array = this.prev.slice();  
+        console.log(`insertion${this.prev}`)
+        return `insertion-sort complelte`;
     }
 
     comparePerf() {
@@ -78,9 +86,15 @@ class SortCollections {
             return this.perf;
         }
     }
+    toString() {
+        return this.prev;
+    }
 
 }
 
-var sort = new SortCollections('draw into the mouth by contracting the muscles of the lip and mouth to make a partial vacuum');
+var charSort = new SortCollections('draw into the mouth by contracting the muscles of the lip and mouth to make a partial vacuum'); // 92char
 
-console.table(sort.comparePerf());
+var numSort = new SortCollections(new Array(92).fill(0).map(x => x += Math.floor(Math.random() * 100) + 1));
+
+console.table(charSort.comparePerf());
+console.table(numSort.comparePerf());
