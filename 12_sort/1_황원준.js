@@ -1,25 +1,17 @@
-/* 컬렉션 클래스로 병합중..
-*
-*
-*미완성 소스 입니다.*/
-
-
 class SortCollections {
-    constructor() {
-        this.array = [];
-        this.gaps = [5, 3, 1]; //used shell
+    constructor(items) {
+        this.array = [...items];
+        this.perf = [];
     }
-
-    swap(sortName, index1, index2) {
+/*basical sort*/   
+    //used bubble,selection
+    swap(index1, index2) {
         let temp = this.array[index1];
         this.array[index1] = this.array[index2];
         this.array[index2] = temp;
-        console.log(`sort by ${sortName} swap ${this.array[index1]} to ${this.array[index2]}`)
     }
-    
-    bubbleSort(items) {
-        this.array = [...items];
-        
+    //basics sort 
+    bubbleSort() {
         let len = this.array.length,
              i,
              j,
@@ -28,139 +20,72 @@ class SortCollections {
          for (i = 0; i < len; i++) {
             for (j = 0, stop = len - i; j < stop; j++) {
                 if (this.array[j] > this.array[j + 1]) {
-                    this.swap('bubble',j, j+1);
+                    this.swap(j, j+1);
                 }
             }
          }
-    return `completed bubbleSorting${this.array}`;
+        return `bubble-sort complete ${this.array}`
     }
-
-    selectionSort(items) {
-        this.array = [...items];
-
+    //better then bubbleSort
+    selectionSort() {
         let len = this.array.length,
             i,
             j,
-            indexMin;
+            min;
 
         for (i = 0; i < len - 1; i++) {
-            indexMin = i;
-            for (j = i; j < len; j++) {
-                if(this.array[indexMin] > this.array[j]) {
-                    indexMin = j;
+            min = i;
+            for (j = i + 1; j < len; j++) {
+                if (this.array[j] < this.array[min]) {
+                    min = j;
                 }
             }
-            if (i !== indexMin) {
-                this.swap('selection',i, indexMin)
+            if (i !== min) {
+                this.swap(i, min)
             }
         }
+        return `selection-sort complete ${this.array}`;
     }
-
-    shellInsertionSort(items) {
-        this.array = [...items];
-
+    //better then selectionSort
+    insertionSort() {
         let len = this.array.length,
-            g,
-            i,
-            j;
+              i,
+              j,
+              temp;
 
-        for (g = 0; g < this.gaps.length; ++g) {
-            for (i = this.gaps[g]; i < len; ++i) {
-                let tempData = this.array[i];
-                for (j = i; j >= this.gaps[g] && this.array[j - this.gaps[g]] > tempData; j -= this.gaps[g]) {
-                    this.array[j] = this.array[j - this.gaps[g]]
-                }
-                this.array[j] = tempData;
-            }
-        }
-        
-    }
+        for (i = 1; i < len; i++) {
+            j = i;
+            temp = this.array[i];
 
-    mergeSort(items) {
-        this.array = [...items];
-
-        let len = this.array.length;
-        if (len === 1) {
-            return this.array;
-        }
-
-        let mid = Math.floor(len / 2),
-            left = this.array.slice(0, mid),
-            right = this.array.slice(mid, len);
-        console.log(mid,left,right)
-        return this.merge(this.mergeSort(left), this.mergeSort(right)); 
-    }
-
-    merge(left, right) {
-        let result = [],
-        il = 0,
-        ir = 0;
-
-        while (il < left.length && ir < right.length) {
-            if (left[il] < right[ir]) {
-                result.push(left[il++]);
-            } else {
-                result.push(right[ir++]);
-            }
-        }
-
-        while (il < left.length) {
-            result.push(left[il++]);
-        }
-
-        while (ir < right.length) {
-            result.push(right[ir++])
-        }
-
-        return result;
-    }
-    
-    quickSort() {
-        this.quick(this.array, 0, this.array.length - 1);
-    }
-
-    quick(array, left, right) {
-        let index;
-
-        if (array.length > 1) {
-            index = this.partition(array, left, right);
-
-            if (left < index - 1) {
-                this.quick(array, left, index - 1);
-            }
-
-            if(index < right) {
-                this.quick(array, index, right);
-            }
-        }
-    }
-
-    partition(array, left ,right) {
-
-        let pivot = array[Math.floor((right + left) / 2)],
-                i = left,
-                j = right;
-
-        while (i <= j) {
-            while (array[i] < pivot) {
-                i++;
-            }
-            while (array[i] > pivot) {
+            while (j > 0 && this.array[j] > temp) {
+                this.array[j] = this.array[j-1];
                 j--;
             }
-            if (i <= j) {
-                this.swapQuickSort(array, i, j);
-                i++;
-                j--;
-            }
+            this.array[j] = temp;
         }
-        return i;
+        return `insertion-sort complelte ${this.array}`;
     }
 
-    swapQuickSort(array, index1, index2) {
-        let temp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = temp;
+    comparePerformance() {
+        if(this.array) {
+                    let t0 = performance.now();
+                    this.bubbleSort();
+                    let t1 = performance.now();
+                    this.perf.push({sort: 'bubble', time: (t1 - t0).toFixed(4)})
+                    let t2 = performance.now();
+                    this.selectionSort();
+                    let t3 = performance.now();
+                    this.perf.push({sort: 'selection', time:(t3 - t2).toFixed(4)})
+                    let t4 = performance.now();
+                    this.insertionSort();
+                    let t5 = performance.now();
+                    this.perf.push({sort: 'insertion', time: (t5 - t4).toFixed(4)})
+            return console.table(this.perf)
+        }
     }
-    
+
 }
+
+var sort = new SortCollections('draw into the mouth by contracting the muscles of the lip and mouth to make a partial vacuum');
+
+sort.comparePerformance();
