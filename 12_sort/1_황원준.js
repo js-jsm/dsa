@@ -14,7 +14,6 @@ class SortCollections {
     }
     //basics sort 
     bubbleSort() {
-
         let i, j, stop; 
 
          for (i = 0; i < this._len; i++) {
@@ -25,7 +24,7 @@ class SortCollections {
             }
          }
         this.array = this.prev.slice();        
-        console.log(`bubble${this.prev}`)
+        console.log(`bubble${this.array}`)
         return `bubble-sort complete`
     }
     //better then bubbleSort
@@ -44,7 +43,7 @@ class SortCollections {
             }
         }
         this.array = this.prev.slice();  
-        console.log(`selection${this.prev}`)
+        console.log(`selection${this.array}`)
         return `selection-sort complete`;
     }
     //better then selectionSort
@@ -62,7 +61,7 @@ class SortCollections {
             this.array[j] = temp;
         }
         this.array = this.prev.slice();  
-        console.log(`insertion${this.prev}`)
+        console.log(`insertion${this.array}`)
         return `insertion-sort complelte`;
     }
 
@@ -85,9 +84,6 @@ class SortCollections {
             
             return this.perf;
         }
-    }
-    toString() {
-        return this.prev;
     }
 
 }
