@@ -68,22 +68,21 @@ class SortCollections {
 
     comparePerf() {
         if(this.array) {
-
-            let arr = new Array(6).fill(performance);
-
-            [arr[1], arr[3], arr[7]] = 
-            [this.bubbleSort(), this.selectionSort(), this.insertionSort()]
-
+            let arr = new Array(9).fill(performance);
             let arr2 = arr.map((v, i) => {
-                 let type = Object.prototype.toString.call(v);
-                 return type === '[object Performance]'? v.now() : v(); 
+                switch(i) {
+                    case 1  : return this.bubbleSort();
+                    case 4  : return this.selectionSort();
+                    case 7  : return this.insertionSort();
+                    default : return v.now();
+                }
             });
 
-            this.perf['bubble']    = (arr2[1] -arr2[0]).toFixed(4)
-            this.perf['selection'] = (arr2[3] -arr2[2]).toFixed(4)
-            this.perf['insertion'] = (arr2[5] -arr2[4]).toFixed(4)
+            this.perf['bubble']    = {time: (arr2[2] -arr2[0]).toFixed(4)}
+            this.perf['selection'] = {time: (arr2[5] -arr2[3]).toFixed(4)}
+            this.perf['insertion'] = {time: (arr2[8] -arr2[6]).toFixed(4)}
             
-            return console.table(this.perf)
+            return this.perf;
         }
     }
 
@@ -91,4 +90,4 @@ class SortCollections {
 
 var sort = new SortCollections('draw into the mouth by contracting the muscles of the lip and mouth to make a partial vacuum');
 
-sort.comparePerf();
+console.table(sort.comparePerf());
