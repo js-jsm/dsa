@@ -1,7 +1,8 @@
 class SortCollections {
     constructor(items) {
         this.array = [...items];
-        this.perf = [];
+        this._len  = this.array.length;
+        this.perf  = [];
     }
 /*basical sort*/   
     //used bubble,selection
@@ -12,13 +13,10 @@ class SortCollections {
     }
     //basics sort 
     bubbleSort() {
-        let len = this.array.length,
-             i,
-             j,
-             stop;
+        let i, j, stop; 
 
-         for (i = 0; i < len; i++) {
-            for (j = 0, stop = len - i; j < stop; j++) {
+         for (i = 0; i < this._len; i++) {
+            for (j = 0, stop = this._len - i; j < stop; j++) {
                 if (this.array[j] > this.array[j + 1]) {
                     this.swap(j, j+1);
                 }
@@ -28,14 +26,11 @@ class SortCollections {
     }
     //better then bubbleSort
     selectionSort() {
-        let len = this.array.length,
-            i,
-            j,
-            min;
+        let i, j, min;
 
-        for (i = 0; i < len - 1; i++) {
+        for (i = 0; i < this._len - 1; i++) {
             min = i;
-            for (j = i + 1; j < len; j++) {
+            for (j = i + 1; j < this._len; j++) {
                 if (this.array[j] < this.array[min]) {
                     min = j;
                 }
@@ -48,13 +43,10 @@ class SortCollections {
     }
     //better then selectionSort
     insertionSort() {
-        let len = this.array.length,
-              i,
-              j,
-              temp;
+        let i, j, temp;
 
-        for (i = 1; i < len; i++) {
-            j = i;
+        for (i = 1; i < this._len; i++) {
+            j    = i;
             temp = this.array[i];
 
             while (j > 0 && this.array[j] > temp) {
@@ -67,8 +59,9 @@ class SortCollections {
     }
 
     comparePerf() {
-        if(this.array) {
+        if (this._len !== 0) {
             let arr = new Array(9).fill(performance);
+
             let arr2 = arr.map((v, i) => {
                 switch(i) {
                     case 1  : return this.bubbleSort();
