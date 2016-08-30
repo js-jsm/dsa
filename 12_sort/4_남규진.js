@@ -4,7 +4,15 @@ class Sort {
         this.pos = 0;
         this.size = size;
 
-        this.init();
+        // this.init();
+        this.initWithFunctional();
+    }
+
+    initWithFunctional() {
+        this.dataStore = 
+                new Array(this.size)
+                    .fill().map((v, i) => i + 1)
+                    .sort(function(a,b) {return Math.random()-0.5});
     }
 
     init() {
